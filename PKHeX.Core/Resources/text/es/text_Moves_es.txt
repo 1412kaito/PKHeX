@@ -1,4 +1,4 @@
--
+﻿—
 Destructor
 Golpe Kárate
 Doble Bofetón
@@ -718,3 +718,26 @@ Electropunzada
 Furia Natural
 Multiataque
 Gigarrayo Fulminante
+Cabeza Sorpresa
+Puños Plasma
+Géiser Fotónico
+Fotodestrucción Apocalíptica
+Embestida Solar
+Deflagración Lunar
+Somanta Amistosa
+Tempestad Rocosa
+Estruendo Implacable
+Pikaturbo
+Salpikasurf
+Pikapicado
+Pikatormenta
+Vapodrenaje
+Joltioparálisis
+Flarembestida
+Espeaura
+Umbreozona
+Leafitobombas
+Glaceoprisma
+Sylveotornado
+Eevimpacto
+Ferropuño Doble

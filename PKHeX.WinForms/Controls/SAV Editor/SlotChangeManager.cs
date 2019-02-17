@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading;
+using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PKHeX.Core;
@@ -15,57 +15,126 @@ namespace PKHeX.WinForms.Controls
     /// <summary>
     /// Manager class for moving slots.
     /// </summary>
-    public class SlotChangeManager : IDisposable
+    public sealed class SlotChangeManager : IDisposable
     {
         // Disposeables
         public readonly SAVEditor SE;
         private Image OriginalBackground;
         private Image CurrentBackground;
-        public Image colorizedcolor;
+
+        public Image ColorizedColor { get; private set; }
+        public int ColorizedBox { get; private set; } = -1;
+        public int ColorizedSlot { get; private set; } = -1;
+
+        public DrawConfig Draw { private get; set; }
+
+        public bool GlowHover { get; set; } = true;
+        public readonly BitmapAnimator HoverWorker;
 
         private SaveFile SAV => SE.SAV;
         public SlotChangeInfo DragInfo;
         public readonly List<BoxEditor> Boxes = new List<BoxEditor>();
-        public int colorizedbox = -1;
-        public int colorizedslot = -1;
+        public readonly List<ISlotViewer<PictureBox>> OtherSlots = new List<ISlotViewer<PictureBox>>();
         public event DragEventHandler RequestExternalDragDrop;
+        private readonly ToolTip ShowSet = new ToolTip {InitialDelay = 200, IsBalloon = false};
+        private readonly SoundPlayer Sounds = new SoundPlayer();
+        private PictureBox HoveredSlot;
 
         public SlotChangeManager(SAVEditor se)
         {
+            HoverWorker = new BitmapAnimator(Resources.slotHover);
             SE = se;
-            Reset();
         }
-        public void Reset() { DragInfo = new SlotChangeInfo(SAV); colorizedbox = colorizedslot = -1; }
-        public bool DragActive => DragInfo.DragDropInProgress || !DragInfo.LeftMouseIsDown;
+
+        public void Reset() { DragInfo = new SlotChangeInfo(SAV); ColorizedBox = ColorizedSlot = -1; }
+        public bool CanStartDrag => DragInfo.LeftMouseIsDown && !Cursor.Position.Equals(MouseDownPosition);
+        private Point MouseDownPosition { get; set; }
+
         public void SetCursor(Cursor z, object sender)
         {
             if (SE != null)
-                DragInfo.Cursor = (sender as Control).FindForm().Cursor = z;
+                DragInfo.Cursor = ((Control)sender).FindForm().Cursor = z;
         }
+
         public void MouseEnter(object sender, EventArgs e)
         {
             var pb = (PictureBox)sender;
             if (pb.Image == null)
                 return;
-            OriginalBackground = pb.BackgroundImage;
-            pb.BackgroundImage = CurrentBackground = Resources.slotHover;
-            if (!DragActive)
-                SetCursor(Cursors.Hand, sender);
+            BeginHoverSlot(pb);
         }
+
+        private void BeginHoverSlot(PictureBox pb)
+        {
+            var view = WinFormsUtil.FindFirstControlOfType<ISlotViewer<PictureBox>>(pb);
+            var data = view.GetSlotData(pb);
+            var pk = SAV.GetStoredSlot(data.Offset);
+            HoveredSlot = pb;
+
+            OriginalBackground = pb.BackgroundImage;
+
+            Bitmap hover;
+            if (GlowHover)
+            {
+                HoverWorker.Stop();
+
+                var bgr = new[] { Draw.GlowInitial.B, Draw.GlowInitial.G, Draw.GlowInitial.R };
+                SpriteUtil.GetSpriteGlow(pk, bgr, out var glowdata, out var GlowBase);
+                hover = ImageUtil.LayerImage(GlowBase, Resources.slotHover, 0, 0);
+                HoverWorker.GlowToColor = Draw.GlowFinal;
+                HoverWorker.GlowFromColor = Draw.GlowInitial;
+                HoverWorker.Start(pb, GlowBase, glowdata, OriginalBackground);
+            }
+            else
+            {
+                hover = Resources.slotHover;
+            }
+
+            pb.BackgroundImage = CurrentBackground = OriginalBackground == null ? hover : ImageUtil.LayerImage(OriginalBackground, hover, 0, 0);
+
+            if (Settings.Default.HoverSlotShowText)
+                ShowSimulatorSetTooltip(pb, pk);
+            if (Settings.Default.HoverSlotPlayCry)
+                PlayCry(pk);
+        }
+
+        private void EndHoverSlot()
+        {
+            if (HoveredSlot != null)
+                HoverCancel();
+            ShowSet.RemoveAll();
+            Sounds.Stop();
+        }
+
+        public void HoverCancel()
+        {
+            HoverWorker.Stop();
+            HoveredSlot = null;
+        }
+
+        public void RefreshHoverSlot(ISlotViewer<PictureBox> parent)
+        {
+            if (HoveredSlot == null || !parent.SlotPictureBoxes.Contains(HoveredSlot))
+                return;
+
+            BeginHoverSlot(HoveredSlot);
+        }
+
         public void MouseLeave(object sender, EventArgs e)
         {
+            EndHoverSlot();
             var pb = (PictureBox)sender;
             if (pb.BackgroundImage != CurrentBackground)
                 return;
             pb.BackgroundImage = OriginalBackground;
-            if (!DragActive)
-                SetCursor(Cursors.Default, sender);
         }
+
         public void MouseClick(object sender, MouseEventArgs e)
         {
             if (!DragInfo.DragDropInProgress)
                 SE.ClickSlot(sender, e);
         }
+
         public void MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -73,13 +142,18 @@ namespace PKHeX.WinForms.Controls
             if (e.Button == MouseButtons.Right)
                 DragInfo.RightMouseIsDown = false;
         }
+
         public void MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 DragInfo.LeftMouseIsDown = true;
+                MouseDownPosition = Cursor.Position;
+            }
             if (e.Button == MouseButtons.Right)
                 DragInfo.RightMouseIsDown = true;
         }
+
         public void QueryContinueDrag(object sender, QueryContinueDragEventArgs e)
         {
             if (e.Action != DragAction.Cancel && e.Action != DragAction.Drop)
@@ -88,6 +162,7 @@ namespace PKHeX.WinForms.Controls
             DragInfo.RightMouseIsDown = false;
             DragInfo.DragDropInProgress = false;
         }
+
         public void DragEnter(object sender, DragEventArgs e)
         {
             if (e.AllowedEffect == (DragDropEffects.Copy | DragDropEffects.Link)) // external file
@@ -98,53 +173,114 @@ namespace PKHeX.WinForms.Controls
             if (DragInfo.DragDropInProgress)
                 SetCursor((Cursor)DragInfo.Cursor, sender);
         }
-        
-        public void HandleMovePKM(PictureBox pb, int slot, int box, bool encrypt)
+
+        public void MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!CanStartDrag)
+                return;
+
+            // Abort if there is no Pokemon in the given slot.
+            PictureBox pb = (PictureBox)sender;
+            if (pb.Image == null)
+                return;
+            var view = WinFormsUtil.FindFirstControlOfType<ISlotViewer<PictureBox>>(pb);
+            var src = view.GetSlotData(pb);
+            if (!src.Editable || SAV.IsSlotLocked(src.Box, src.Slot))
+                return;
+            bool encrypt = Control.ModifierKeys == Keys.Control;
+            HandleMovePKM(pb, encrypt);
+        }
+
+        public void DragDrop(object sender, DragEventArgs e)
+        {
+            PictureBox pb = (PictureBox)sender;
+            var view = WinFormsUtil.FindFirstControlOfType<ISlotViewer<PictureBox>>(pb);
+            var src = view.GetSlotData(pb);
+            if (!src.Editable || SAV.IsSlotLocked(src.Box, src.Slot))
+            {
+                SystemSounds.Asterisk.Play();
+                e.Effect = DragDropEffects.Copy;
+                DragInfo.Reset();
+                return;
+            }
+
+            bool overwrite = Control.ModifierKeys == Keys.Alt;
+            bool clone = Control.ModifierKeys == Keys.Control;
+            DragInfo.Destination = src;
+            HandleDropPKM(sender, e, overwrite, clone);
+        }
+
+        private void ShowSimulatorSetTooltip(Control pb, PKM pk)
+        {
+            if (pk.Species == 0)
+            {
+                ShowSet.RemoveAll();
+                return;
+            }
+            var text = GetLocalizedPreviewText(pk, Settings.Default.Language);
+            ShowSet.SetToolTip(pb, text);
+        }
+
+        private void PlayCry(PKM pk)
+        {
+            if (pk.Species == 0)
+                return;
+
+            string path = GetCryPath(pk, Main.CryPath);
+            if (!File.Exists(path))
+                return;
+
+            Sounds.SoundLocation = path;
+            try { Sounds.Play(); }
+            catch { }
+        }
+
+        private static ISlotViewer<T> GetViewParent<T>(T pb) where T : Control
+            => WinFormsUtil.FindFirstControlOfType<ISlotViewer<T>>(pb);
+
+        public void HandleMovePKM(PictureBox pb, bool encrypt)
         {
             // Create a temporary PKM file to perform a drag drop operation.
 
             // Set flag to prevent re-entering.
             DragInfo.DragDropInProgress = true;
 
-            DragInfo.Source.Parent = pb.Parent;
-            DragInfo.Source.Slot = slot;
-            DragInfo.Source.Box = box;
-            DragInfo.Source.Offset = SE.GetPKMOffset(DragInfo.Source.Slot, DragInfo.Source.Box);
-
             // Prepare Data
+            DragInfo.Source = GetViewParent(pb).GetSlotData(pb);
             DragInfo.Source.OriginalData = SAV.GetData(DragInfo.Source.Offset, SAV.SIZE_STORED);
 
             // Make a new file name based off the PID
-            string newfile = CreateDragDropPKM(pb, box, encrypt, out bool external);
+            string newfile = CreateDragDropPKM(pb, encrypt, out bool external);
             DragInfo.Reset();
             SetCursor(SE.GetDefaultCursor, pb);
 
             // Browser apps need time to load data since the file isn't moved to a location on the user's local storage.
             // Tested 10ms -> too quick, 100ms was fine. 500ms should be safe?
-            int delay = external ? 500 : 0;
+            // Keep it to 10 seconds; Discord upload only stores the file path until you click Upload.
+            int delay = external ? 10_000 : 0;
             DeleteAsync(newfile, delay);
             if (DragInfo.Source.IsParty || DragInfo.Destination.IsParty)
                 SE.SetParty();
         }
+
         private async void DeleteAsync(string path, int delay)
         {
-            await Task.Delay(delay);
+            await Task.Delay(delay).ConfigureAwait(true);
             if (File.Exists(path) && DragInfo.CurrentPath == null)
                 File.Delete(path);
         }
-        private string CreateDragDropPKM(PictureBox pb, int box, bool encrypt, out bool external)
+
+        private string CreateDragDropPKM(PictureBox pb, bool encrypt, out bool external)
         {
             byte[] dragdata = SAV.DecryptPKM(DragInfo.Source.OriginalData);
             Array.Resize(ref dragdata, SAV.SIZE_STORED);
-            PKM pkx = SAV.GetPKM(dragdata);
-            string fn = pkx.FileName; fn = fn.Substring(0, fn.LastIndexOf('.'));
-            string filename = $"{fn}{(encrypt ? ".ek" + pkx.Format : "." + pkx.Extension)}";
 
             // Make File
-            string newfile = Path.Combine(Path.GetTempPath(), Util.CleanFileName(filename));
+            PKM pk = SAV.GetPKM(dragdata);
+            string newfile = FileUtil.GetPKMTempFileName(pk, encrypt);
             try
             {
-                TryMakeDragDropPKM(pb, encrypt, pkx, newfile, out external);
+                TryMakeDragDropPKM(pb, encrypt, pk, newfile, out external);
             }
             catch (Exception x)
             {
@@ -154,11 +290,13 @@ namespace PKHeX.WinForms.Controls
 
             return newfile;
         }
-        private bool TryMakeDragDropPKM(PictureBox pb, bool encrypt, PKM pkx, string newfile, out bool external)
+
+        private bool TryMakeDragDropPKM(PictureBox pb, bool encrypt, PKM pk, string newfile, out bool external)
         {
-            File.WriteAllBytes(newfile, encrypt ? pkx.EncryptedBoxData : pkx.DecryptedBoxData);
+            File.WriteAllBytes(newfile, encrypt ? pk.EncryptedBoxData : pk.DecryptedBoxData);
             var img = (Bitmap)pb.Image;
             SetCursor(new Cursor(img.GetHicon()), pb);
+            HoverCancel();
             pb.Image = null;
             pb.BackgroundImage = Resources.slotDrag;
             // Thread Blocks on DoDragDrop
@@ -169,6 +307,8 @@ namespace PKHeX.WinForms.Controls
             {
                 pb.Image = img;
                 pb.BackgroundImage = OriginalBackground;
+                SetCursor(SE.GetDefaultCursor, pb);
+                return false;
             }
 
             if (result == DragDropEffects.Copy) // viewed in tabs or cloned
@@ -181,10 +321,11 @@ namespace PKHeX.WinForms.Controls
         }
 
         private void SetSlotSprite(SlotChange loc, PKM pk, BoxEditor x = null) => (x ?? SE.Box).SetSlotFiller(pk, loc.Box, loc.Slot);
-        
+
         public void HandleDropPKM(object sender, DragEventArgs e, bool overwrite, bool clone)
         {
-            DragInfo.Destination.Offset = SE.GetPKMOffset(DragInfo.Destination.Slot, DragInfo.Destination.Box);
+            var pb = (PictureBox)sender;
+            DragInfo.Destination = GetViewParent(pb).GetSlotData(pb);
             // Check for In-Dropped files (PKX,SAV,ETC)
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             if (Directory.Exists(files[0])) { SE.LoadBoxes(out string _, files[0]); return; }
@@ -195,48 +336,43 @@ namespace PKHeX.WinForms.Controls
             }
             if (SAV.IsSlotLocked(DragInfo.Destination.Box, DragInfo.Destination.Slot))
             {
-                AlertInvalidate("Unable to set to locked slot.");
+                AlertInvalidate(MessageStrings.MsgSaveSlotLocked);
                 return;
             }
-            bool noEgg = DragInfo.Destination.IsParty && SE.SAV.IsPartyAllEggs(DragInfo.Destination.Slot - 30) && !SE.HaX;
+            bool noEgg = DragInfo.Destination.IsParty && SE.SAV.IsPartyAllEggs(DragInfo.Destination.Slot) && !SE.HaX;
             if (DragInfo.Source.Offset < 0) // external source
             {
                 if (!TryLoadFiles(files, e, noEgg))
-                    AlertInvalidate("Unable to set to this slot.");
+                    AlertInvalidate(MessageStrings.MsgSaveSlotBadData);
                 return;
             }
             if (!TrySetPKMDestination(sender, e, overwrite, clone, noEgg))
             {
-                AlertInvalidate("Unable to set to this slot.");
+                AlertInvalidate(MessageStrings.MsgSaveSlotEmpty);
                 return;
             }
 
             if (DragInfo.Source.Parent == null) // internal file
                 DragInfo.Reset();
         }
+
         private void AlertInvalidate(string msg)
         {
             DragInfo.Destination.Slot = -1; // Invalidate
             WinFormsUtil.Alert(msg);
         }
-        private bool TryLoadFiles(string[] files, DragEventArgs e, bool noEgg)
+
+        private bool TryLoadFiles(IReadOnlyList<string> files, DragEventArgs e, bool noEgg)
         {
-            if (files.Length <= 0)
+            if (files.Count == 0)
                 return false;
-            string file = files[0];
-            FileInfo fi = new FileInfo(file);
-            if (!fi.Exists)
-                return false;
-            if (!PKX.IsPKM(fi.Length) && !MysteryGift.IsMysteryGift(fi.Length))
+
+            var temp = FileUtil.GetSingleFromPath(files[0], SAV);
+            if (temp == null)
             {
                 RequestExternalDragDrop?.Invoke(this, e); // pass thru
-                return false;
+                return true; // treat as handled
             }
-
-            byte[] data = File.ReadAllBytes(file);
-            MysteryGift mg = MysteryGift.GetMysteryGift(data, fi.Extension);
-            PKM temp = mg?.ConvertToPKM(SAV) ?? PKMConverter.GetPKMfromBytes(data,
-                           prefer: fi.Extension.Length > 0 ? (fi.Extension.Last() - 0x30) & 7 : SAV.Generation);
 
             PKM pk = PKMConverter.ConvertToType(temp, SAV.PKMType, out string c);
             if (pk == null)
@@ -249,11 +385,19 @@ namespace PKHeX.WinForms.Controls
             if (noEgg && (pk.Species == 0 || pk.IsEgg))
                 return false;
 
-            string[] errata = SAV.IsPKMCompatible(pk);
-            if (errata.Length > 0)
+            if (PKMConverter.IsIncompatibleGB(pk.Format, SAV.Japanese, pk.Japanese))
+            {
+                c = PKMConverter.GetIncompatibleGBMessage(pk, SAV.Japanese);
+                WinFormsUtil.Error(c);
+                Debug.WriteLine(c);
+                return false;
+            }
+
+            var errata = SAV.IsPKMCompatible(pk);
+            if (errata.Count > 0)
             {
                 string concat = string.Join(Environment.NewLine, errata);
-                if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, concat, "Continue?"))
+                if (DialogResult.Yes != WinFormsUtil.Prompt(MessageBoxButtons.YesNo, concat, MessageStrings.MsgContinue))
                 {
                     Debug.WriteLine(c);
                     Debug.WriteLine(concat);
@@ -265,6 +409,7 @@ namespace PKHeX.WinForms.Controls
             Debug.WriteLine(c);
             return true;
         }
+
         private bool TrySetPKMDestination(object sender, DragEventArgs e, bool overwrite, bool clone, bool noEgg)
         {
             PKM pkz = GetPKM(true);
@@ -281,83 +426,99 @@ namespace PKHeX.WinForms.Controls
             SetCursor(SE.GetDefaultCursor, sender);
             return true;
         }
+
         private bool TrySetPKMSource(object sender, bool overwrite, bool clone)
         {
             if (overwrite && DragInfo.Destination.IsValid) // overwrite delete old slot
             {
                 // Clear from slot
                 SetPKM(SAV.BlankPKM, true, null);
+                return true;
             }
-            else if (!clone && DragInfo.Destination.IsValid)
+            if (!clone && DragInfo.Destination.IsValid)
             {
                 // Load data from destination
                 PKM pk = ((PictureBox)sender).Image != null
                     ? GetPKM(false)
                     : SAV.BlankPKM;
-                
+
                 // Set destination pokemon data to source slot
                 SetPKM(pk, true, null);
+                return true;
             }
-            else
-                return false;
-            return true;
+            return false;
         }
 
         public void SetColor(int box, int slot, Image img)
         {
-            // Update SubViews
             foreach (var boxview in Boxes)
+                updateView(boxview);
+            foreach (var other in OtherSlots)
+                updateView(other);
+
+            void updateView(ISlotViewer<PictureBox> view)
             {
-                if (boxview.CurrentBox != box && boxview.SlotPictureBoxes.Count == boxview.BoxSlotCount) continue;
-                var slots = boxview.SlotPictureBoxes;
-                for (int i = 0; i < slots.Count; i++)
-                    slots[i].BackgroundImage = slot == i ? img : null;
+                if (view.ViewIndex == ColorizedBox && ColorizedSlot >= 0)
+                    view.SlotPictureBoxes[ColorizedSlot].BackgroundImage = null;
+                if (view.ViewIndex == box && slot >= 0)
+                    view.SlotPictureBoxes[slot].BackgroundImage = img;
             }
-            colorizedbox = box;
-            colorizedslot = slot;
-            colorizedcolor = img;
+
+            ColorizedBox = box;
+            ColorizedSlot = slot;
+            ColorizedColor = img;
+
+            OriginalBackground = img;
+            if (HoverWorker != null)
+                HoverWorker.OriginalBackground = img;
         }
 
         // PKM Get Set
         private PKM GetPKM(bool src) => GetPKM(src ? DragInfo.Source : DragInfo.Destination);
+
         public PKM GetPKM(SlotChange slot)
         {
             int o = slot.Offset;
             if (o < 0)
                 return slot.PKM;
-            return slot.IsParty ? SAV.GetPartySlot(o) : SAV.GetStoredSlot(o);
+
+            if (slot.IsParty)
+                return SAV.GetPartySlot(o);
+
+            var pk = SAV.GetStoredSlot(o);
+            pk.Slot = slot.Slot;
+            pk.Box = slot.Box;
+            return pk;
         }
+
         private void SetPKM(PKM pk, bool src, Image img) => SetPKM(pk, src ? DragInfo.Source : DragInfo.Destination, src, img);
+
         public void SetPKM(PKM pk, SlotChange slot, bool src, Image img)
         {
             if (slot.IsParty)
             {
                 SetPKMParty(pk, src, slot);
                 if (img == Resources.slotDel)
-                    slot.Slot = 30 + SAV.PartyCount;
+                    slot.Slot = SAV.PartyCount;
                 SetColor(slot.Box, slot.Slot, img ?? Resources.slotSet);
                 return;
             }
 
             int o = slot.Offset;
             SAV.SetStoredSlot(pk, o);
-            if (slot.Slot >= 30)
+            if (slot.Type == StorageSlotType.Box)
             {
-                SetSlotSprite(slot, pk);
-                return;
-            }
-
-            // Update SubViews
-            foreach (var boxview in Boxes)
-            {
-                if (boxview.CurrentBox == slot.Box)
+                foreach (var boxview in Boxes)
                 {
-                    Debug.WriteLine($"Setting to {boxview.Parent.Name}'s [{boxview.CurrentBox+1:d2}]|{boxview.CurrentBoxName} at Slot {slot.Slot+1}.");
+                    if (boxview.CurrentBox != slot.Box)
+                        continue;
+                    Debug.WriteLine($"Setting to {boxview.Parent.Name}'s [{boxview.CurrentBox + 1:d2}]|{boxview.CurrentBoxName} at Slot {slot.Slot + 1}.");
                     SetSlotSprite(slot, pk, boxview);
                 }
             }
             SetColor(slot.Box, slot.Slot, img ?? Resources.slotSet);
         }
+
         private void SetPKMParty(PKM pk, bool src, SlotChange slot)
         {
             int o = slot.Offset;
@@ -365,35 +526,70 @@ namespace PKHeX.WinForms.Controls
             {
                 if (pk.Species == 0) // Empty Slot
                 {
-                    SAV.DeletePartySlot(slot.Slot - 30);
+                    SAV.DeletePartySlot(slot.Slot);
                     SE.SetParty();
                     return;
                 }
             }
             else
             {
-                if (30 + SAV.PartyCount < slot.Slot)
+                if (SAV.PartyCount < slot.Slot)
                 {
                     o = SAV.GetPartyOffset(SAV.PartyCount);
-                    slot.Slot = 30 + SAV.PartyCount;
+                    slot.Slot = SAV.PartyCount;
                 }
             }
 
-            if (pk.Stat_HPMax == 0) // Without Stats (Box)
-            {
-                pk.SetStats(pk.GetStats(SAV.Personal.GetFormeEntry(pk.Species, pk.AltForm)));
-                pk.Stat_Level = pk.CurrentLevel;
-            }
             SAV.SetPartySlot(pk, o);
             SE.SetParty();
         }
 
+        // Utility
+        public void SwapBoxes(int index, int other)
+        {
+            if (index == other)
+                return;
+            SAV.SwapBox(index, other);
+            UpdateBoxViewAtBoxIndexes(index, other);
+        }
+
         public void Dispose()
         {
+            Sounds.Dispose();
+            HoverWorker.Dispose();
             SE?.Dispose();
             OriginalBackground?.Dispose();
             CurrentBackground?.Dispose();
-            colorizedcolor?.Dispose();
+            ColorizedColor?.Dispose();
+        }
+
+        private void UpdateBoxViewAtBoxIndexes(params int[] boxIndexes)
+        {
+            foreach (var box in Boxes)
+            {
+                var current = box.CurrentBox;
+                if (!boxIndexes.Contains(current))
+                    continue;
+                box.ResetSlots();
+                box.ResetBoxNames(current);
+            }
+        }
+
+        private static string GetCryPath(PKM pk, string cryFolder)
+        {
+            var name = PKX.GetResourceStringSprite(pk.Species, pk.AltForm, pk.Gender, pk.Format).Replace('_', '-').Substring(1);
+            var path = Path.Combine(cryFolder, $"{name}.wav");
+            if (!File.Exists(path))
+                path = Path.Combine(cryFolder, $"{pk.Species}.wav");
+            return path;
+        }
+
+        private static string GetLocalizedPreviewText(PKM pk, string language)
+        {
+            var set = new ShowdownSet(pk);
+            if (pk.Format <= 2) // Nature preview from IVs
+                set.Nature = Experience.GetNatureVC(pk.EXP);
+            return set.LocalizedText(language);
         }
     }
 }

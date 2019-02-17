@@ -1,14 +1,24 @@
 ﻿namespace PKHeX.Core
 {
+    /// <summary>
+    /// Result of a Legality Check
+    /// </summary>
     public class CheckResult
     {
-        internal readonly Severity Judgement = Severity.Valid;
-        internal string Comment = LegalityCheckStrings.V;
-        public bool Valid => Judgement >= Severity.Fishy;
-        public bool Flag;
-        internal readonly CheckIdentifier Identifier;
+        public Severity Judgement { get; }
+        public CheckIdentifier Identifier { get; }
+        public string Comment { get; internal set; }
 
-        internal CheckResult(CheckIdentifier i) { Identifier = i; }
+        public bool Valid => Judgement >= Severity.Fishy;
+        public string Rating => Judgement.Description();
+
+        internal CheckResult(CheckIdentifier i)
+        {
+            Judgement = Severity.Valid;
+            Comment = LegalityCheckStrings.L_AValid;
+            Identifier = i;
+        }
+
         internal CheckResult(Severity s, string c, CheckIdentifier i)
         {
             Judgement = s;

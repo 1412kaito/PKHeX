@@ -1,4 +1,4 @@
-———
+﻿———
 Pound
 Karate Chop
 Double Slap
@@ -718,3 +718,26 @@ Zing Zap
 Nature’s Madness
 Multi-Attack
 10,000,000 Volt Thunderbolt
+Mind Blown
+Plasma Fists
+Photon Geyser
+Light That Burns the Sky
+Searing Sunraze Smash
+Menacing Moonraze Maelstrom
+Let’s Snuggle Forever
+Splintered Stormshards
+Clangorous Soulblaze
+Zippy Zap
+Splishy Splash
+Floaty Fall
+Pika Papow
+Bouncy Bubble
+Buzzy Buzz
+Sizzly Slide
+Glitzy Glow
+Baddy Bad
+Sappy Seed
+Freezy Frost
+Sparkly Swirl
+Veevee Volley
+Double Iron Bash

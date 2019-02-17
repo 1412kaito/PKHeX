@@ -33,6 +33,8 @@
             this.B_Save = new System.Windows.Forms.Button();
             this.TC_Misc = new System.Windows.Forms.TabControl();
             this.TAB_Main = new System.Windows.Forms.TabPage();
+            this.NUD_Coin = new System.Windows.Forms.NumericUpDown();
+            this.L_Coin = new System.Windows.Forms.Label();
             this.L_CurrentMap = new System.Windows.Forms.Label();
             this.L_UGFlags = new System.Windows.Forms.Label();
             this.NUD_UGFlags = new System.Windows.Forms.NumericUpDown();
@@ -96,8 +98,14 @@
             this.NUD_CastleRankItem = new System.Windows.Forms.NumericUpDown();
             this.NUD_CastleRankInfo = new System.Windows.Forms.NumericUpDown();
             this.L_CastleRank01 = new System.Windows.Forms.Label();
+            this.TAB_Walker = new System.Windows.Forms.TabPage();
+            this.B_UnlockCourses = new System.Windows.Forms.Button();
+            this.Tab_Misc = new System.Windows.Forms.TabPage();
+            this.B_AllSealsLegal = new System.Windows.Forms.Button();
+            this.B_AllSealsIllegal = new System.Windows.Forms.Button();
             this.TC_Misc.SuspendLayout();
             this.TAB_Main.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Coin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_UGFlags)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_BP)).BeginInit();
             this.GB_FlyDest.SuspendLayout();
@@ -133,6 +141,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUD_CastleRankRcv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_CastleRankItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_CastleRankInfo)).BeginInit();
+            this.TAB_Walker.SuspendLayout();
+            this.Tab_Misc.SuspendLayout();
             this.SuspendLayout();
             // 
             // B_Cancel
@@ -161,6 +171,8 @@
             // 
             this.TC_Misc.Controls.Add(this.TAB_Main);
             this.TC_Misc.Controls.Add(this.TAB_BF);
+            this.TC_Misc.Controls.Add(this.TAB_Walker);
+            this.TC_Misc.Controls.Add(this.Tab_Misc);
             this.TC_Misc.Location = new System.Drawing.Point(12, 13);
             this.TC_Misc.Name = "TC_Misc";
             this.TC_Misc.SelectedIndex = 0;
@@ -169,6 +181,8 @@
             // 
             // TAB_Main
             // 
+            this.TAB_Main.Controls.Add(this.NUD_Coin);
+            this.TAB_Main.Controls.Add(this.L_Coin);
             this.TAB_Main.Controls.Add(this.L_CurrentMap);
             this.TAB_Main.Controls.Add(this.L_UGFlags);
             this.TAB_Main.Controls.Add(this.NUD_UGFlags);
@@ -185,6 +199,32 @@
             this.TAB_Main.UseVisualStyleBackColor = true;
             this.TAB_Main.DragDrop += new System.Windows.Forms.DragEventHandler(this.TAB_Poketch_DragDrop);
             this.TAB_Main.DragEnter += new System.Windows.Forms.DragEventHandler(this.TAB_Poketch_DragEnter);
+            // 
+            // NUD_Coin
+            // 
+            this.NUD_Coin.Location = new System.Drawing.Point(122, 9);
+            this.NUD_Coin.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.NUD_Coin.Name = "NUD_Coin";
+            this.NUD_Coin.Size = new System.Drawing.Size(51, 20);
+            this.NUD_Coin.TabIndex = 9;
+            this.NUD_Coin.Value = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            // 
+            // L_Coin
+            // 
+            this.L_Coin.Location = new System.Drawing.Point(80, 6);
+            this.L_Coin.Name = "L_Coin";
+            this.L_Coin.Size = new System.Drawing.Size(40, 22);
+            this.L_Coin.TabIndex = 10;
+            this.L_Coin.Text = "Coin:";
+            this.L_Coin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // L_CurrentMap
             // 
@@ -223,7 +263,7 @@
             // 
             // NUD_BP
             // 
-            this.NUD_BP.Location = new System.Drawing.Point(34, 8);
+            this.NUD_BP.Location = new System.Drawing.Point(30, 8);
             this.NUD_BP.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -240,7 +280,7 @@
             // 
             // L_BP
             // 
-            this.L_BP.Location = new System.Drawing.Point(3, 6);
+            this.L_BP.Location = new System.Drawing.Point(-1, 6);
             this.L_BP.Name = "L_BP";
             this.L_BP.Size = new System.Drawing.Size(30, 22);
             this.L_BP.TabIndex = 1;
@@ -1093,6 +1133,59 @@
             this.L_CastleRank01.Text = "Recovery / Item / Info";
             this.L_CastleRank01.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // TAB_Walker
+            // 
+            this.TAB_Walker.Controls.Add(this.B_UnlockCourses);
+            this.TAB_Walker.Location = new System.Drawing.Point(4, 22);
+            this.TAB_Walker.Name = "TAB_Walker";
+            this.TAB_Walker.Padding = new System.Windows.Forms.Padding(3);
+            this.TAB_Walker.Size = new System.Drawing.Size(373, 239);
+            this.TAB_Walker.TabIndex = 2;
+            this.TAB_Walker.Text = "Pokewalker";
+            this.TAB_Walker.UseVisualStyleBackColor = true;
+            // 
+            // B_UnlockCourses
+            // 
+            this.B_UnlockCourses.Location = new System.Drawing.Point(153, 98);
+            this.B_UnlockCourses.Name = "B_UnlockCourses";
+            this.B_UnlockCourses.Size = new System.Drawing.Size(75, 55);
+            this.B_UnlockCourses.TabIndex = 0;
+            this.B_UnlockCourses.Text = "Unlock All Courses";
+            this.B_UnlockCourses.UseVisualStyleBackColor = true;
+            this.B_UnlockCourses.Click += new System.EventHandler(this.B_UnlockCourses_Click);
+            // 
+            // Tab_Misc
+            // 
+            this.Tab_Misc.Controls.Add(this.B_AllSealsIllegal);
+            this.Tab_Misc.Controls.Add(this.B_AllSealsLegal);
+            this.Tab_Misc.Location = new System.Drawing.Point(4, 22);
+            this.Tab_Misc.Name = "Tab_Misc";
+            this.Tab_Misc.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_Misc.Size = new System.Drawing.Size(373, 239);
+            this.Tab_Misc.TabIndex = 3;
+            this.Tab_Misc.Text = "Misc";
+            this.Tab_Misc.UseVisualStyleBackColor = true;
+            // 
+            // B_AllSealsLegal
+            // 
+            this.B_AllSealsLegal.Location = new System.Drawing.Point(6, 6);
+            this.B_AllSealsLegal.Name = "B_AllSealsLegal";
+            this.B_AllSealsLegal.Size = new System.Drawing.Size(120, 37);
+            this.B_AllSealsLegal.TabIndex = 0;
+            this.B_AllSealsLegal.Text = "Give All Seals (Legal)";
+            this.B_AllSealsLegal.UseVisualStyleBackColor = true;
+            this.B_AllSealsLegal.Click += new System.EventHandler(this.OnBAllSealsLegalOnClick);
+            // 
+            // B_AllSealsIllegal
+            // 
+            this.B_AllSealsIllegal.Location = new System.Drawing.Point(6, 49);
+            this.B_AllSealsIllegal.Name = "B_AllSealsIllegal";
+            this.B_AllSealsIllegal.Size = new System.Drawing.Size(120, 37);
+            this.B_AllSealsIllegal.TabIndex = 1;
+            this.B_AllSealsIllegal.Text = "Give All Seals (Illegal)";
+            this.B_AllSealsIllegal.UseVisualStyleBackColor = true;
+            this.B_AllSealsIllegal.Click += new System.EventHandler(this.OnBAllSealsLegalOnClick);
+            // 
             // SAV_Misc4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1107,6 +1200,7 @@
             this.Text = "Misc Editor";
             this.TC_Misc.ResumeLayout(false);
             this.TAB_Main.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Coin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_UGFlags)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_BP)).EndInit();
             this.GB_FlyDest.ResumeLayout(false);
@@ -1145,6 +1239,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUD_CastleRankRcv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_CastleRankItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_CastleRankInfo)).EndInit();
+            this.TAB_Walker.ResumeLayout(false);
+            this.Tab_Misc.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1218,5 +1314,12 @@
         private System.Windows.Forms.ComboBox CB_CurrentApp;
         private System.Windows.Forms.Label L_CurrentApp;
         private System.Windows.Forms.Label L_CurrentMap;
+        private System.Windows.Forms.TabPage TAB_Walker;
+        private System.Windows.Forms.Button B_UnlockCourses;
+        private System.Windows.Forms.NumericUpDown NUD_Coin;
+        private System.Windows.Forms.Label L_Coin;
+        private System.Windows.Forms.TabPage Tab_Misc;
+        private System.Windows.Forms.Button B_AllSealsIllegal;
+        private System.Windows.Forms.Button B_AllSealsLegal;
     }
 }

@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace PKHeX.Core
 {
-    public class LegalInfo
+    /// <summary>
+    /// Calculated Information storage with properties useful for parsing the legality of the input <see cref="PKM"/>.
+    /// </summary>
+    public sealed class LegalInfo
     {
         /// <summary>The <see cref="PKM"/> object used for comparisons.</summary>
         private readonly PKM pkm;
 
-        /// <summary>The generation of games the PKM originated from.</summary>
+        /// <summary>The generation of games the <see cref="PKM"/> originated from.</summary>
         public int Generation { get; set; }
 
-        /// <summary> The Game the PPKM originated from.</summary>
+        /// <summary>The Game the <see cref="PKM"/> originated from.</summary>
         public GameVersion Game { get; set; }
 
         /// <summary>The matched Encounter details for the <see cref="PKM"/>. </summary>
@@ -20,61 +22,60 @@ namespace PKHeX.Core
             get => _match;
             set
             {
-                if (EncounterMatch != null && (value.LevelMin != EncounterMatch.LevelMin || value.Species != EncounterMatch.Species))
-                    _evochains = null;
+                if (_match != null && (value.LevelMin != _match.LevelMin || value.Species != _match.Species))
+                    _evochains = null; // clear if evo chain has the potential to be different
                 _match = value;
                 Parse.Clear();
             }
         }
 
-        public bool WasXD => pkm?.Version == 15 && EncounterMatch != null && !Legal.Encounter_Colo.Contains(EncounterMatch);
+        private IEncounterable _match;
+
+        /// <summary>Indicates whether or not the <see cref="PKM"/> originated from <see cref="GameVersion.XD"/>.</summary>
+        public bool WasXD => pkm?.Version == 15 && EncounterMatch is IVersion v && v.Version == GameVersion.XD;
+
+        /// <summary>Base Relearn Moves for the <see cref="EncounterMatch"/>.</summary>
         public int[] RelearnBase { get; set; }
 
+        /// <summary>Top level Legality Check result list for the <see cref="EncounterMatch"/>.</summary>
         public readonly List<CheckResult> Parse = new List<CheckResult>();
 
         public CheckResult[] Relearn { get; set; } = new CheckResult[4];
         public CheckMoveResult[] Moves { get; set; } = new CheckMoveResult[4];
 
-        public DexLevel[][] EvoChainsAllGens => _evochains ?? (_evochains = Legal.GetEvolutionChainsAllGens(pkm, EncounterMatch));
         public ValidEncounterMoves EncounterMoves { get; set; }
+        public IReadOnlyList<EvoCriteria>[] EvoChainsAllGens => _evochains ?? (_evochains = EvolutionChain.GetEvolutionChainsAllGens(pkm, EncounterMatch));
+        private IReadOnlyList<EvoCriteria>[] _evochains;
 
-        private DexLevel[][] _evochains;
-        private IEncounterable _match;
+        /// <summary><see cref="RNG"/> related information that generated the <see cref="PKM.PID"/>/<see cref="PKM.IVs"/> value(s).</summary>
         public PIDIV PIDIV { get; set; }
+
+        /// <summary>Indicates whether or not the <see cref="PIDIV"/> can originate from the <see cref="EncounterMatch"/>.</summary>
+        /// <remarks>This boolean is true until all valid <see cref="PIDIV"/> encounters are tested, after which it is false.</remarks>
         public bool PIDIVMatches { get; set; } = true;
+
+        /// <summary>Indicates whether or not the <see cref="PIDIV"/> can originate from the <see cref="EncounterMatch"/> with explicit <see cref="RNG"/> <see cref="Frame"/> matching.</summary>
+        /// <remarks>This boolean is true until all valid <see cref="Frame"/> entries are tested for all possible <see cref="EncounterSlot"/> matches, after which it is false.</remarks>
+        public bool FrameMatches { get; set; } = true;
+
+        public readonly bool Korean;
 
         public LegalInfo(PKM pk)
         {
             pkm = pk;
-            Game = (GameVersion) pkm.Version;
+            Korean = pk.Korean;
+
+            // Store repeatedly accessed values
+            Game = (GameVersion)pkm.Version;
             Generation = pkm.GenNumber;
         }
 
+        /// <summary>List of all near-matches that were rejected for a given reason.</summary>
+        public List<EncounterRejected> InvalidMatches;
+
         internal void Reject(CheckResult c)
         {
-            if (InvalidMatches == null)
-                InvalidMatches = new List<RejectedEncounter>();
-            InvalidMatches.Add(new RejectedEncounter(EncounterMatch, c));
+            (InvalidMatches ?? (InvalidMatches = new List<EncounterRejected>())).Add(new EncounterRejected(EncounterMatch, c));
         }
-
-        public class RejectedEncounter : IEncounterable
-        {
-            public readonly IEncounterable Encounter;
-            public readonly CheckResult Check;
-            public string Reason => Check.Comment;
-
-            public int Species => Encounter.Species;
-            public string Name => Encounter.Name;
-            public bool EggEncounter => Encounter.EggEncounter;
-            public int LevelMin => Encounter.LevelMin;
-            public int LevelMax => Encounter.LevelMax;
-
-            public RejectedEncounter(IEncounterable encounter, CheckResult check)
-            {
-                Encounter = encounter;
-                Check = check;
-            }
-        }
-        public List<RejectedEncounter> InvalidMatches;
     }
 }

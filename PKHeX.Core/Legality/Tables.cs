@@ -11,23 +11,19 @@ namespace PKHeX.Core
             013, 014, 015, 016, 492, 493, 494, 495, 496, 497, 498, 499, 576,
             851
         };
-        public static readonly int[] Items_CommonBall = { 4, 3, 2, 1 };
-        public static readonly int[] Items_UncommonBall =
-        {
-            7, 576, 13, 492, 497, 14, 495, 493, 496, 494, 11, 498, 8, 6,
-            12, 15, 9, 5, 499, 10, 16
-        };
+
         public static readonly int[] Gen4EncounterTypes = { 1, 2, 4, 5, 7, 9, 10, 12, 23, 24 };
-        public static readonly int[] LightBall = { 25, 26, 172 };
-        public static readonly int[] Fossils = { 138, 140, 142, 345, 347, 408, 410, 564, 566, 696, 698 };
+        public static readonly HashSet<int> LightBall = new HashSet<int> { 25, 26, 172 };
         public static readonly int[] RotomMoves = { 0, 315, 056, 059, 403, 437 };
-        public static readonly int[] WildForms =
+
+        public static readonly HashSet<int> WildForms = new HashSet<int>
         {
             422, 423, // Shellos
             550, // Basculin
             669, 670, 671 // Flabébé
         };
-        public static readonly int[] SplitBreed =
+
+        public static readonly HashSet<int> SplitBreed = new HashSet<int>
         {
             // Incense
             113, 242, // Chansey
@@ -40,7 +36,32 @@ namespace PKHeX.Core
             315, 407, // Roselia
             358, // Chimecho
         };
-        public static readonly int[] FormChange = // Pokémon that can change form and retain it
+
+        /// <summary>
+        /// Species that show their default Species sprite regardless of current <see cref="PKM.AltForm"/>
+        /// </summary>
+        public static readonly HashSet<int> SpeciesDefaultFormSprite = new HashSet<int>
+        {
+            414, // Mothim
+            493, // Arceus
+            664, // Scatterbug
+            665, // Spewpa
+            773, // Silvally
+            778, // Mimikyu
+        };
+
+        /// <summary>
+        /// Species that show a <see cref="PKM.Gender"/> specific Sprite
+        /// </summary>
+        public static readonly HashSet<int> SpeciesGenderedSprite = new HashSet<int>
+        {
+            521, // Unfezant
+            592, // Frillish
+            593, // Jellicent
+            668, // Pyroar
+        };
+
+        public static readonly HashSet<int> FormChange = new HashSet<int> // Pokémon that can change form and retain it
         {
             386, // Deoxys
             412, // Burmy
@@ -59,15 +80,19 @@ namespace PKHeX.Core
             720, // Hoopa
             741, // Oricorio
             773, // Silvally
+
+            800, // Necrozma
         };
-        public static readonly int[] FormChangeMoves =
+
+        public static readonly HashSet<int> FormChangeMoves = new HashSet<int>
         {
             386, // Deoxys
             487, // Giratina
             492, // Shaymin
             720, // Hoopa
         };
-        public static readonly int[] BreedMaleOnly =
+
+        public static readonly HashSet<int> BreedMaleOnly = new HashSet<int>
         {
             128, // Tauros
             627, 628, // Rufflet
@@ -75,7 +100,7 @@ namespace PKHeX.Core
             538, 539, // Sawk & Throh
         };
 
-        public static readonly int[] NoHatchFromEgg =
+        public static readonly HashSet<int> NoHatchFromEgg = new HashSet<int>
         {
             132, // Ditto
             144, // Articuno
@@ -158,20 +183,32 @@ namespace PKHeX.Core
             800, // Necrozma
             801, // Magearna
             802, // Marshadow
+
+            803, // Poipole
+            804, // Naganadel
+            805, // Stakataka
+            806, // Blacephalon
+            807, // Zeraora
+
+            808, // Meltan
+            809, // Melmetal
         };
 
         public static readonly HashSet<int> BattleFrontierBanlist = new HashSet<int>
         {
             150, // Mewtwo
             151, // Mew
+
             249, // Lugia
             250, // Ho-Oh
             251, // Celebi
+
             382, // Kyogre
             383, // Groudon
             384, // Rayquaza
             385, // Jirachi
             386, // Deoxys
+
             483, // Dialga
             484, // Palkia
             487, // Giratina
@@ -180,6 +217,7 @@ namespace PKHeX.Core
             491, // Darkrai
             492, // Shaymin
             493, // Arceus
+
             494, // Victini
             643, // Reshiram
             644, // Zekrom
@@ -187,12 +225,14 @@ namespace PKHeX.Core
             647, // Keldeo
             648, // Meloetta
             649, // Genesect
+
             716, // Xerneas
             717, // Yveltal
             718, // Zygarde
             719, // Diancie
             720, // Hoopa
             721, // Volcanion
+
             789, // Cosmog
             790, // Cosmoem
             791, // Solgaleo
@@ -200,9 +240,12 @@ namespace PKHeX.Core
             800, // Necrozma
             801, // Magearna
             802, // Marshadow
+            807, // Zeraora
+            808, // Meltan
+            809, // Melmetal
         };
 
-        public static readonly int[] BattleForms =
+        public static readonly HashSet<int> BattleForms = new HashSet<int>
         {
             351, // Castform
             421, // Cherrim
@@ -213,7 +256,8 @@ namespace PKHeX.Core
             746, // Wishiwashi
             778, // Mimikyu
         };
-        public static readonly int[] BattleMegas =
+
+        public static readonly HashSet<int> BattleMegas = new HashSet<int>
         {
             // XY
             3,6,9,65,80,
@@ -228,31 +272,40 @@ namespace PKHeX.Core
             302,319,323,334,362,373,376,384,
             428,475,
             531,
-            719
-        };
-        public static readonly int[] BattlePrimals = { 382, 383 };
+            719,
 
-        public static readonly int[] Z_Moves =
+            // USUM
+            800, // Ultra Necrozma
+        };
+
+        public static readonly HashSet<int> BattlePrimals = new HashSet<int> { 382, 383 };
+
+        public static readonly HashSet<int> Z_Moves = new HashSet<int>
         {
             622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658,
             695, 696, 697, 698, 699, 700, 701, 702, 703,
             719,
+            723, 724, 725, 726, 727, 728
         };
-        internal static readonly int[] InvalidSketch = new[] { 165, 448 }.Concat(Z_Moves).ToArray(); // Struggle & Chatter
 
-        public static readonly int[] Legends =
+        internal static readonly int[] UnreleasedMoves = {617}; // Light of Ruin
+        internal static readonly int[] CantSketchMoves = {165, 448}; // Struggle & Chatter
+        internal static readonly HashSet<int> InvalidSketch = new HashSet<int>(CantSketchMoves.Concat(Z_Moves).Concat(UnreleasedMoves));
+
+        public static readonly HashSet<int> Legends = new HashSet<int>
         {
             150, 151, 249, 250, 251, 382, 383, 384, 385, 386, 483,
             484, 487, 489, 490, 491, 492, 493, 494, 643, 644, 646,
             647, 648, 649, 716, 717, 718, 719, 720, 721, 789, 790,
-            791, 792, 800, 801, 802
+            791, 792, 800, 801, 802, 807, 808, 809,
         };
-        public static readonly int[] SubLegends =
+
+        public static readonly HashSet<int> SubLegends = new HashSet<int>
         {
             144, 145, 146, 243, 244, 245, 377, 378, 379, 380, 381,
             480, 481, 482, 485, 486, 488, 638, 639, 640, 641, 642,
             645, 772, 773, 787, 788, 785, 786, 793, 794, 795, 796,
-            797, 798, 799
+            797, 798, 799, 803, 804, 805, 806,
         };
 
         public static readonly int[] Arceus_Plate = {303, 306, 304, 305, 309, 308, 310, 313, 298, 299, 301, 300, 307, 302, 311, 312, 644};
@@ -263,7 +316,7 @@ namespace PKHeX.Core
             122, // Mr. Mime (Mime Jr with Mimic)
             185, // Sudowoodo (Bonsly with Mimic)
         };
-        
+
         // List of species that evolve from a previous species having a move while leveling up
         internal static readonly int[] SpeciesEvolutionWithMove =
         {
@@ -277,32 +330,34 @@ namespace PKHeX.Core
             700, // Sylveon (Eevee with Fairy Move)
             763, // Tsareena (Steenee with Stomp)
         };
+
         internal static readonly int[] FairyMoves =
         {
-            186, //Sweet Kiss
-            204, //Charm
-            236, //Moonlight 
-            574, //Disarming Voice 
-            577, //Draining Kiss 
-            578, //Crafty Shield 
-            579, //Flower Shield 
-            581, //Misty Terrain 
-            583, //Play Rough 
-            584, //Fairy Wind 
-            585, //Moonblast 
-            587, //Fairy Lock 
-            597, //Aromatic Mist 
-            601, //Geomancy 
-            605, //Dazzling Gleam 
-            608, //Baby-Doll Eyes 
-            617, //Light of Ruin 
-            656, //Twinkle Tackle 
-            657, //Twinkle Tackle 
-            666, //Floral Healing 
-            698, //Guardian of Alola 
-            705, //Fleur Cannon 
-            717, //Nature's Madness 
+            186, // Sweet Kiss
+            204, // Charm
+            236, // Moonlight
+            574, // Disarming Voice
+            577, // Draining Kiss
+            578, // Crafty Shield
+            579, // Flower Shield
+            581, // Misty Terrain
+            583, // Play Rough
+            584, // Fairy Wind
+            585, // Moonblast
+            587, // Fairy Lock
+            597, // Aromatic Mist
+            601, // Geomancy
+            605, // Dazzling Gleam
+            608, // Baby-Doll Eyes
+            617, // Light of Ruin
+            656, // Twinkle Tackle
+            657, // Twinkle Tackle
+            666, // Floral Healing
+            698, // Guardian of Alola
+            705, // Fleur Cannon
+            717, // Nature's Madness
         };
+
         // Moves that trigger the evolution by move
         internal static readonly int[][] MoveEvolutionWithMove =
         {
@@ -316,6 +371,7 @@ namespace PKHeX.Core
             FairyMoves, // Sylveon (Eevee with Fairy Move)
             new [] { 023 }, // Tsareena (Steenee with Stomp)
         };
+
         // Min level for any species for every generation to learn the move for evolution by move
         // 0 means it cant be learned in that generation
         internal static readonly int[][] MinLevelEvolutionWithMove =
@@ -339,6 +395,7 @@ namespace PKHeX.Core
             // Tsareena (Steenee with Stomp)
             new [] { 0, 0, 0, 0, 0, 0, 0, 2 },
         };
+
         // True -> the pokemon could hatch from an egg with the move for evolution as an egg move
         internal static readonly bool[][] EggMoveEvolutionWithMove =
         {
@@ -361,18 +418,41 @@ namespace PKHeX.Core
             // Tsareena (Steenee with Stomp)
             new [] { false, false, false, false, false, false, false, false },
         };
-        internal static readonly int[] MixedGenderBreeding =
+
+        internal static readonly HashSet<int> MixedGenderBreeding = new HashSet<int>
         {
             29, // Nidoran♀
             32, // Nidoran♂
-            314, // Volbeat
+            313, // Volbeat
             314, // Illumise
         };
+
+        public static readonly HashSet<int> FixedGenderFromBiGender = new HashSet<int>
+        {
+            290, // Nincada
+            292, // Shedinja (G)
+
+            412, // Burmy
+            413, // Wormadam (F)
+            414, // Mothim (M)
+
+            280, // Ralts
+            475, // Gallade (M)
+
+            361, // Snorunt
+            478, // Froslass (F)
+
+            677, // Espurr
+            678, // Meowstic (M/F) forme specific
+        };
+
         #region Games
 
+        public static readonly int[] Games_7gg = { 42, 43 };
         public static readonly int[] Games_7vc2 = { 39, 40, 41 }; // Gold, Silver, Crystal
         public static readonly int[] Games_7vc1 = { 35, 36, 37, 38 }; // Red, Green, Blue, Yellow
         public static readonly int[] Games_7go = { 34 };
+        public static readonly int[] Games_7usum = { 32, 33 };
         public static readonly int[] Games_7sm = { 30, 31 };
         public static readonly int[] Games_6xy = { 24, 25 };
         public static readonly int[] Games_6oras = { 26, 27 };
@@ -384,6 +464,21 @@ namespace PKHeX.Core
         public static readonly int[] Games_3e = { 3 };
         public static readonly int[] Games_3r = { 4, 5 };
         public static readonly int[] Games_3s = { 15 };
+
+        public static readonly int[] Languages_GB =
+        {
+            (int) LanguageID.Japanese, (int) LanguageID.English, (int) LanguageID.French, (int) LanguageID.German, (int) LanguageID.Spanish,
+            (int) LanguageID.Italian,
+            (int) LanguageID.Korean // check Korean for the VC case, never possible to match string outside of this case
+        };
+
+        public static readonly int[] Languages_3 =
+        {
+            (int) LanguageID.Japanese, (int) LanguageID.English, (int) LanguageID.French, (int) LanguageID.German, (int) LanguageID.Spanish, (int) LanguageID.Italian,
+        };
+
+        public static readonly int[] Languages_46 = Languages_GB;
+        public static readonly int[] Languages_7 = Languages_46.Concat(new[] { (int)LanguageID.ChineseS, (int)LanguageID.ChineseT }).ToArray();
 
         #endregion
     }

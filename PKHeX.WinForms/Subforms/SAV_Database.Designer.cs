@@ -99,10 +99,13 @@
             this.Menu_SearchDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_SearchLegal = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_SearchIllegal = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_SearchClones = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_SearchAdvanced = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_OpenDB = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Report = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Export = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Import = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_DeleteClones = new System.Windows.Forms.ToolStripMenuItem();
             this.P_Results = new System.Windows.Forms.Panel();
             this.PAN_Box = new System.Windows.Forms.Panel();
             this.bpkx66 = new System.Windows.Forms.PictureBox();
@@ -156,8 +159,6 @@
             this.L_Format = new System.Windows.Forms.Label();
             this.FLP_Level = new System.Windows.Forms.FlowLayoutPanel();
             this.RTB_Instructions = new System.Windows.Forms.RichTextBox();
-            this.Menu_SearchClones = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_DeleteClones = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bpkx30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bpkx29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bpkx28)).BeginInit();
@@ -926,7 +927,7 @@
             // 
             // Menu_Exit
             // 
-            this.Menu_Exit.Image = Properties.Resources.exit;
+            this.Menu_Exit.Image = global::PKHeX.WinForms.Properties.Resources.exit;
             this.Menu_Exit.Name = "Menu_Exit";
             this.Menu_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.Menu_Exit.ShowShortcutKeys = false;
@@ -941,6 +942,7 @@
             this.Menu_OpenDB,
             this.Menu_Report,
             this.Menu_Export,
+            this.Menu_Import,
             this.Menu_DeleteClones});
             this.Menu_Tools.Name = "Menu_Tools";
             this.Menu_Tools.Size = new System.Drawing.Size(47, 20);
@@ -955,9 +957,9 @@
             this.Menu_SearchIllegal,
             this.Menu_SearchClones,
             this.Menu_SearchAdvanced});
-            this.Menu_SearchSettings.Image = Properties.Resources.settings;
+            this.Menu_SearchSettings.Image = global::PKHeX.WinForms.Properties.Resources.settings;
             this.Menu_SearchSettings.Name = "Menu_SearchSettings";
-            this.Menu_SearchSettings.Size = new System.Drawing.Size(197, 22);
+            this.Menu_SearchSettings.Size = new System.Drawing.Size(209, 22);
             this.Menu_SearchSettings.Text = "Search Settings";
             // 
             // Menu_SearchBoxes
@@ -996,6 +998,13 @@
             this.Menu_SearchIllegal.Size = new System.Drawing.Size(207, 22);
             this.Menu_SearchIllegal.Text = "Show Illegal";
             // 
+            // Menu_SearchClones
+            // 
+            this.Menu_SearchClones.CheckOnClick = true;
+            this.Menu_SearchClones.Name = "Menu_SearchClones";
+            this.Menu_SearchClones.Size = new System.Drawing.Size(207, 22);
+            this.Menu_SearchClones.Text = "Clones Only";
+            // 
             // Menu_SearchAdvanced
             // 
             this.Menu_SearchAdvanced.CheckOnClick = true;
@@ -1007,27 +1016,43 @@
             // 
             // Menu_OpenDB
             // 
-            this.Menu_OpenDB.Image = Properties.Resources.folder;
+            this.Menu_OpenDB.Image = global::PKHeX.WinForms.Properties.Resources.folder;
             this.Menu_OpenDB.Name = "Menu_OpenDB";
-            this.Menu_OpenDB.Size = new System.Drawing.Size(197, 22);
+            this.Menu_OpenDB.Size = new System.Drawing.Size(209, 22);
             this.Menu_OpenDB.Text = "Open Database Folder";
             this.Menu_OpenDB.Click += new System.EventHandler(this.OpenDB);
             // 
             // Menu_Report
             // 
-            this.Menu_Report.Image = Properties.Resources.report;
+            this.Menu_Report.Image = global::PKHeX.WinForms.Properties.Resources.report;
             this.Menu_Report.Name = "Menu_Report";
-            this.Menu_Report.Size = new System.Drawing.Size(197, 22);
+            this.Menu_Report.Size = new System.Drawing.Size(209, 22);
             this.Menu_Report.Text = "Create Data Report";
             this.Menu_Report.Click += new System.EventHandler(this.GenerateDBReport);
             // 
             // Menu_Export
             // 
-            this.Menu_Export.Image = Properties.Resources.export;
+            this.Menu_Export.Image = global::PKHeX.WinForms.Properties.Resources.export;
             this.Menu_Export.Name = "Menu_Export";
-            this.Menu_Export.Size = new System.Drawing.Size(197, 22);
+            this.Menu_Export.Size = new System.Drawing.Size(209, 22);
             this.Menu_Export.Text = "Export Results to Folder";
             this.Menu_Export.Click += new System.EventHandler(this.Menu_Export_Click);
+            // 
+            // Menu_Import
+            // 
+            this.Menu_Import.Image = global::PKHeX.WinForms.Properties.Resources.savePKM;
+            this.Menu_Import.Name = "Menu_Import";
+            this.Menu_Import.Size = new System.Drawing.Size(209, 22);
+            this.Menu_Import.Text = "Import Results to SaveFile";
+            this.Menu_Import.Click += new System.EventHandler(this.Menu_Import_Click);
+            // 
+            // Menu_DeleteClones
+            // 
+            this.Menu_DeleteClones.Image = global::PKHeX.WinForms.Properties.Resources.nocheck;
+            this.Menu_DeleteClones.Name = "Menu_DeleteClones";
+            this.Menu_DeleteClones.Size = new System.Drawing.Size(209, 22);
+            this.Menu_DeleteClones.Text = "Delete Clones";
+            this.Menu_DeleteClones.Click += new System.EventHandler(this.Menu_DeleteClones_Click);
             // 
             // P_Results
             // 
@@ -1035,14 +1060,14 @@
             this.P_Results.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.P_Results.Controls.Add(this.PAN_Box);
             this.P_Results.Controls.Add(this.SCR_Box);
-            this.P_Results.Location = new System.Drawing.Point(12, 27);
+            this.P_Results.Location = new System.Drawing.Point(12, 32);
             this.P_Results.Name = "P_Results";
             this.P_Results.Size = new System.Drawing.Size(285, 352);
             this.P_Results.TabIndex = 66;
             // 
             // PAN_Box
             // 
-            this.PAN_Box.BackgroundImage = Properties.Resources.box_wp16xy;
+            this.PAN_Box.BackgroundImage = global::PKHeX.WinForms.Properties.Resources.box_wp16xy;
             this.PAN_Box.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PAN_Box.Controls.Add(this.bpkx66);
             this.PAN_Box.Controls.Add(this.bpkx65);
@@ -1429,7 +1454,7 @@
             // B_Search
             // 
             this.B_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_Search.Location = new System.Drawing.Point(317, 350);
+            this.B_Search.Location = new System.Drawing.Point(317, 355);
             this.B_Search.Name = "B_Search";
             this.B_Search.Size = new System.Drawing.Size(206, 30);
             this.B_Search.TabIndex = 102;
@@ -1445,8 +1470,8 @@
             this.CB_Level.FormattingEnabled = true;
             this.CB_Level.Items.AddRange(new object[] {
             "Any",
-            ">=",
             "==",
+            ">=",
             "<="});
             this.CB_Level.Location = new System.Drawing.Point(22, 0);
             this.CB_Level.Margin = new System.Windows.Forms.Padding(0);
@@ -1541,7 +1566,7 @@
             // 
             // B_Reset
             // 
-            this.B_Reset.Location = new System.Drawing.Point(223, 3);
+            this.B_Reset.Location = new System.Drawing.Point(223, 8);
             this.B_Reset.Name = "B_Reset";
             this.B_Reset.Size = new System.Drawing.Size(75, 23);
             this.B_Reset.TabIndex = 111;
@@ -1551,7 +1576,7 @@
             // 
             // L_Count
             // 
-            this.L_Count.Location = new System.Drawing.Point(99, 11);
+            this.L_Count.Location = new System.Drawing.Point(99, 18);
             this.L_Count.Name = "L_Count";
             this.L_Count.Size = new System.Drawing.Size(83, 13);
             this.L_Count.TabIndex = 114;
@@ -1577,11 +1602,13 @@
             this.CB_Generation.FormattingEnabled = true;
             this.CB_Generation.Items.AddRange(new object[] {
             "Any",
-            "Gen 7 (Sun/Moon)",
-            "Gen 6 (XY/ORAS)",
-            "Gen 5 (BW/B2W2)",
+            "Gen 1 (RBY/GSC)",
+            "Gen 2 (RBY/GSC)",
+            "Gen 3 (RSE/FRLG/CXD)",
             "Gen 4 (DPPt/HGSS)",
-            "Gen 3 (RSE/FRLG/CXD)"});
+            "Gen 5 (BW/B2W2)",
+            "Gen 6 (XY/ORAS)",
+            "Gen 7 (SM/USUM)"});
             this.CB_Generation.Location = new System.Drawing.Point(83, 293);
             this.CB_Generation.Margin = new System.Windows.Forms.Padding(0);
             this.CB_Generation.Name = "CB_Generation";
@@ -1592,7 +1619,7 @@
             // L_Viewed
             // 
             this.L_Viewed.AutoSize = true;
-            this.L_Viewed.Location = new System.Drawing.Point(9, 381);
+            this.L_Viewed.Location = new System.Drawing.Point(9, 386);
             this.L_Viewed.Name = "L_Viewed";
             this.L_Viewed.Size = new System.Drawing.Size(85, 13);
             this.L_Viewed.TabIndex = 117;
@@ -1712,7 +1739,7 @@
             this.TLP_Filters.Controls.Add(this.CB_GameOrigin, 1, 13);
             this.TLP_Filters.Controls.Add(this.L_Generation, 0, 14);
             this.TLP_Filters.Controls.Add(this.CB_Generation, 1, 14);
-            this.TLP_Filters.Location = new System.Drawing.Point(304, 11);
+            this.TLP_Filters.Location = new System.Drawing.Point(304, 16);
             this.TLP_Filters.Name = "TLP_Filters";
             this.TLP_Filters.RowCount = 17;
             this.TLP_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -1732,7 +1759,7 @@
             this.TLP_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TLP_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TLP_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TLP_Filters.Size = new System.Drawing.Size(228, 354);
+            this.TLP_Filters.Size = new System.Drawing.Size(228, 359);
             this.TLP_Filters.TabIndex = 118;
             // 
             // FLP_Format
@@ -1753,8 +1780,8 @@
             this.CB_FormatComparator.FormattingEnabled = true;
             this.CB_FormatComparator.Items.AddRange(new object[] {
             "Any",
-            ">=",
             "==",
+            ">=",
             "<="});
             this.CB_FormatComparator.Location = new System.Drawing.Point(0, 0);
             this.CB_FormatComparator.Margin = new System.Windows.Forms.Padding(0);
@@ -1812,32 +1839,17 @@
             // 
             this.RTB_Instructions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RTB_Instructions.Location = new System.Drawing.Point(63, 27);
+            this.RTB_Instructions.Location = new System.Drawing.Point(63, 32);
             this.RTB_Instructions.Name = "RTB_Instructions";
             this.RTB_Instructions.Size = new System.Drawing.Size(235, 352);
             this.RTB_Instructions.TabIndex = 119;
             this.RTB_Instructions.Text = "";
             // 
-            // Menu_SearchClones
-            // 
-            this.Menu_SearchClones.CheckOnClick = true;
-            this.Menu_SearchClones.Name = "Menu_SearchClones";
-            this.Menu_SearchClones.Size = new System.Drawing.Size(207, 22);
-            this.Menu_SearchClones.Text = "Clones Only";
-            // 
-            // Menu_DeleteClones
-            // 
-            this.Menu_DeleteClones.Image = Properties.Resources.nocheck;
-            this.Menu_DeleteClones.Name = "Menu_DeleteClones";
-            this.Menu_DeleteClones.Size = new System.Drawing.Size(197, 22);
-            this.Menu_DeleteClones.Text = "Delete Clones";
-            this.Menu_DeleteClones.Click += new System.EventHandler(this.Menu_DeleteClones_Click);
-            // 
             // SAV_Database
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 396);
+            this.ClientSize = new System.Drawing.Size(544, 401);
             this.Controls.Add(this.B_Search);
             this.Controls.Add(this.TLP_Filters);
             this.Controls.Add(this.L_Viewed);
@@ -1849,9 +1861,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(800, 435);
+            this.MaximumSize = new System.Drawing.Size(800, 440);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(560, 435);
+            this.MinimumSize = new System.Drawing.Size(560, 440);
             this.Name = "SAV_Database";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Database";
@@ -2068,5 +2080,6 @@
         private System.Windows.Forms.ToolStripMenuItem Menu_SearchAdvanced;
         private System.Windows.Forms.ToolStripMenuItem Menu_SearchClones;
         private System.Windows.Forms.ToolStripMenuItem Menu_DeleteClones;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Import;
     }
 }

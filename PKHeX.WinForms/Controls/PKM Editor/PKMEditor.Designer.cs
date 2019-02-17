@@ -2,12 +2,12 @@
 {
     partial class PKMEditor
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -22,8 +22,8 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -113,6 +113,11 @@
             this.FLP_ShinyLeaf = new System.Windows.Forms.FlowLayoutPanel();
             this.L_ShinyLeaf = new System.Windows.Forms.Label();
             this.ShinyLeaf = new PKHeX.WinForms.Controls.ShinyLeaf();
+            this.FLP_CatchRate = new System.Windows.Forms.FlowLayoutPanel();
+            this.L_CatchRate = new System.Windows.Forms.Label();
+            this.CR_PK1 = new PKHeX.WinForms.Controls.CatchRate();
+            this.FLP_SizeCP = new System.Windows.Forms.FlowLayoutPanel();
+            this.SizeCP = new PKHeX.WinForms.Controls.SizeCP();
             this.Tab_Met = new System.Windows.Forms.TabPage();
             this.CHK_AsEgg = new System.Windows.Forms.CheckBox();
             this.GB_EggConditions = new System.Windows.Forms.GroupBox();
@@ -148,67 +153,8 @@
             this.L_MetTimeOfDay = new System.Windows.Forms.Label();
             this.CB_MetTimeOfDay = new System.Windows.Forms.ComboBox();
             this.Tab_Stats = new System.Windows.Forms.TabPage();
+            this.Stats = new PKHeX.WinForms.Controls.StatEditor();
             this.Contest = new PKHeX.WinForms.Controls.ContestStat();
-            this.FLP_Stats = new System.Windows.Forms.FlowLayoutPanel();
-            this.FLP_StatHeader = new System.Windows.Forms.FlowLayoutPanel();
-            this.FLP_HackedStats = new System.Windows.Forms.FlowLayoutPanel();
-            this.CHK_HackedStats = new System.Windows.Forms.CheckBox();
-            this.FLP_StatsHeaderRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_IVs = new System.Windows.Forms.Label();
-            this.Label_EVs = new System.Windows.Forms.Label();
-            this.Label_Stats = new System.Windows.Forms.Label();
-            this.FLP_HP = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_HP = new System.Windows.Forms.Label();
-            this.FLP_HPRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.TB_HPIV = new System.Windows.Forms.MaskedTextBox();
-            this.TB_HPEV = new System.Windows.Forms.MaskedTextBox();
-            this.Stat_HP = new System.Windows.Forms.MaskedTextBox();
-            this.FLP_Atk = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_ATK = new System.Windows.Forms.Label();
-            this.FLP_AtkRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.TB_ATKIV = new System.Windows.Forms.MaskedTextBox();
-            this.TB_ATKEV = new System.Windows.Forms.MaskedTextBox();
-            this.Stat_ATK = new System.Windows.Forms.MaskedTextBox();
-            this.FLP_Def = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_DEF = new System.Windows.Forms.Label();
-            this.FLP_DefRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.TB_DEFIV = new System.Windows.Forms.MaskedTextBox();
-            this.TB_DEFEV = new System.Windows.Forms.MaskedTextBox();
-            this.Stat_DEF = new System.Windows.Forms.MaskedTextBox();
-            this.FLP_SpA = new System.Windows.Forms.FlowLayoutPanel();
-            this.FLP_SpALeft = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_SPA = new System.Windows.Forms.Label();
-            this.Label_SPC = new System.Windows.Forms.Label();
-            this.FLP_SpARight = new System.Windows.Forms.FlowLayoutPanel();
-            this.TB_SPAIV = new System.Windows.Forms.MaskedTextBox();
-            this.TB_SPAEV = new System.Windows.Forms.MaskedTextBox();
-            this.Stat_SPA = new System.Windows.Forms.MaskedTextBox();
-            this.FLP_SpD = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_SPD = new System.Windows.Forms.Label();
-            this.FLP_SpDRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.TB_SPDIV = new System.Windows.Forms.MaskedTextBox();
-            this.TB_SPDEV = new System.Windows.Forms.MaskedTextBox();
-            this.Stat_SPD = new System.Windows.Forms.MaskedTextBox();
-            this.FLP_Spe = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_SPE = new System.Windows.Forms.Label();
-            this.FLP_SpeRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.TB_SPEIV = new System.Windows.Forms.MaskedTextBox();
-            this.TB_SPEEV = new System.Windows.Forms.MaskedTextBox();
-            this.Stat_SPE = new System.Windows.Forms.MaskedTextBox();
-            this.FLP_StatsTotal = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_Total = new System.Windows.Forms.Label();
-            this.FLP_StatsTotalRight = new System.Windows.Forms.FlowLayoutPanel();
-            this.TB_IVTotal = new System.Windows.Forms.TextBox();
-            this.TB_EVTotal = new System.Windows.Forms.TextBox();
-            this.L_Potential = new System.Windows.Forms.Label();
-            this.FLP_HPType = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_HiddenPowerPrefix = new System.Windows.Forms.Label();
-            this.CB_HPType = new System.Windows.Forms.ComboBox();
-            this.FLP_Characteristic = new System.Windows.Forms.FlowLayoutPanel();
-            this.Label_CharacteristicPrefix = new System.Windows.Forms.Label();
-            this.L_Characteristic = new System.Windows.Forms.Label();
-            this.BTN_RandomEVs = new System.Windows.Forms.Button();
-            this.BTN_RandomIVs = new System.Windows.Forms.Button();
             this.Tab_Attacks = new System.Windows.Forms.TabPage();
             this.PB_WarnMove4 = new System.Windows.Forms.PictureBox();
             this.PB_WarnMove3 = new System.Windows.Forms.PictureBox();
@@ -239,6 +185,7 @@
             this.CB_Move2 = new System.Windows.Forms.ComboBox();
             this.CB_Move1 = new System.Windows.Forms.ComboBox();
             this.Tab_OTMisc = new System.Windows.Forms.TabPage();
+            this.PB_Favorite = new System.Windows.Forms.PictureBox();
             this.FLP_PKMEditors = new System.Windows.Forms.FlowLayoutPanel();
             this.BTN_Ribbons = new System.Windows.Forms.Button();
             this.BTN_Medals = new System.Windows.Forms.Button();
@@ -250,7 +197,7 @@
             this.Label_PrevOT = new System.Windows.Forms.Label();
             this.BTN_RerollEC = new System.Windows.Forms.Button();
             this.GB_Markings = new System.Windows.Forms.GroupBox();
-            this.PB_MarkHorohoro = new System.Windows.Forms.PictureBox();
+            this.PB_MarkGO = new System.Windows.Forms.PictureBox();
             this.PB_MarkVC = new System.Windows.Forms.PictureBox();
             this.PB_MarkAlola = new System.Windows.Forms.PictureBox();
             this.PB_Mark6 = new System.Windows.Forms.PictureBox();
@@ -266,13 +213,10 @@
             this.TB_ExtraByte = new System.Windows.Forms.MaskedTextBox();
             this.CB_ExtraBytes = new System.Windows.Forms.ComboBox();
             this.GB_OT = new System.Windows.Forms.GroupBox();
+            this.TID_Trainer = new PKHeX.WinForms.Controls.TrainerID();
             this.Label_OTGender = new System.Windows.Forms.Label();
             this.TB_OT = new System.Windows.Forms.TextBox();
-            this.TB_SID = new System.Windows.Forms.MaskedTextBox();
-            this.TB_TID = new System.Windows.Forms.MaskedTextBox();
             this.Label_OT = new System.Windows.Forms.Label();
-            this.Label_SID = new System.Windows.Forms.Label();
-            this.Label_TID = new System.Windows.Forms.Label();
             this.Label_EncryptionConstant = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.Tab_Main.SuspendLayout();
@@ -308,6 +252,8 @@
             this.FLP_Purification.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Purification)).BeginInit();
             this.FLP_ShinyLeaf.SuspendLayout();
+            this.FLP_CatchRate.SuspendLayout();
+            this.FLP_SizeCP.SuspendLayout();
             this.Tab_Met.SuspendLayout();
             this.GB_EggConditions.SuspendLayout();
             this.FLP_Met.SuspendLayout();
@@ -322,27 +268,6 @@
             this.FLP_EncounterType.SuspendLayout();
             this.FLP_TimeOfDay.SuspendLayout();
             this.Tab_Stats.SuspendLayout();
-            this.FLP_Stats.SuspendLayout();
-            this.FLP_StatHeader.SuspendLayout();
-            this.FLP_HackedStats.SuspendLayout();
-            this.FLP_StatsHeaderRight.SuspendLayout();
-            this.FLP_HP.SuspendLayout();
-            this.FLP_HPRight.SuspendLayout();
-            this.FLP_Atk.SuspendLayout();
-            this.FLP_AtkRight.SuspendLayout();
-            this.FLP_Def.SuspendLayout();
-            this.FLP_DefRight.SuspendLayout();
-            this.FLP_SpA.SuspendLayout();
-            this.FLP_SpALeft.SuspendLayout();
-            this.FLP_SpARight.SuspendLayout();
-            this.FLP_SpD.SuspendLayout();
-            this.FLP_SpDRight.SuspendLayout();
-            this.FLP_Spe.SuspendLayout();
-            this.FLP_SpeRight.SuspendLayout();
-            this.FLP_StatsTotal.SuspendLayout();
-            this.FLP_StatsTotalRight.SuspendLayout();
-            this.FLP_HPType.SuspendLayout();
-            this.FLP_Characteristic.SuspendLayout();
             this.Tab_Attacks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_WarnMove4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_WarnMove3)).BeginInit();
@@ -355,10 +280,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PB_WarnRelearn1)).BeginInit();
             this.GB_CurrentMoves.SuspendLayout();
             this.Tab_OTMisc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Favorite)).BeginInit();
             this.FLP_PKMEditors.SuspendLayout();
             this.GB_nOT.SuspendLayout();
             this.GB_Markings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_MarkHorohoro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_MarkGO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_MarkVC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_MarkAlola)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Mark6)).BeginInit();
@@ -387,7 +313,7 @@
             this.tabMain.Location = new System.Drawing.Point(0, 0);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(280, 488);
+            this.tabMain.Size = new System.Drawing.Size(280, 565);
             this.tabMain.TabIndex = 1;
             // 
             // Tab_Main
@@ -397,7 +323,7 @@
             this.Tab_Main.Location = new System.Drawing.Point(4, 22);
             this.Tab_Main.Name = "Tab_Main";
             this.Tab_Main.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Main.Size = new System.Drawing.Size(272, 462);
+            this.Tab_Main.Size = new System.Drawing.Size(272, 539);
             this.Tab_Main.TabIndex = 0;
             this.Tab_Main.Text = "Main";
             this.Tab_Main.UseVisualStyleBackColor = true;
@@ -424,9 +350,11 @@
             this.FLP_Main.Controls.Add(this.FLP_ShadowID);
             this.FLP_Main.Controls.Add(this.FLP_Purification);
             this.FLP_Main.Controls.Add(this.FLP_ShinyLeaf);
+            this.FLP_Main.Controls.Add(this.FLP_CatchRate);
+            this.FLP_Main.Controls.Add(this.FLP_SizeCP);
             this.FLP_Main.Location = new System.Drawing.Point(0, 2);
             this.FLP_Main.Name = "FLP_Main";
-            this.FLP_Main.Size = new System.Drawing.Size(272, 459);
+            this.FLP_Main.Size = new System.Drawing.Size(272, 536);
             this.FLP_Main.TabIndex = 103;
             // 
             // FLP_PID
@@ -744,7 +672,6 @@
             this.CB_Nature.Size = new System.Drawing.Size(126, 21);
             this.CB_Nature.TabIndex = 9;
             this.CB_Nature.SelectedIndexChanged += new System.EventHandler(this.ValidateComboBox2);
-            this.CB_Nature.MouseHover += new System.EventHandler(this.UpdateNatureModification);
             this.CB_Nature.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateComboBox);
             // 
             // FLP_HeldItem
@@ -927,8 +854,6 @@
             this.CB_Ability.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CB_Ability.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CB_Ability.FormattingEnabled = true;
-            this.CB_Ability.Items.AddRange(new object[] {
-            "Item"});
             this.CB_Ability.Location = new System.Drawing.Point(0, 0);
             this.CB_Ability.Margin = new System.Windows.Forms.Padding(0);
             this.CB_Ability.Name = "CB_Ability";
@@ -943,8 +868,6 @@
             this.DEV_Ability.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.DEV_Ability.Enabled = false;
             this.DEV_Ability.FormattingEnabled = true;
-            this.DEV_Ability.Items.AddRange(new object[] {
-            "Item"});
             this.DEV_Ability.Location = new System.Drawing.Point(0, 21);
             this.DEV_Ability.Margin = new System.Windows.Forms.Padding(0);
             this.DEV_Ability.Name = "DEV_Ability";
@@ -1354,6 +1277,11 @@
             0,
             0,
             0});
+            this.NUD_Purification.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.NUD_Purification.Name = "NUD_Purification";
             this.NUD_Purification.Size = new System.Drawing.Size(51, 20);
             this.NUD_Purification.TabIndex = 103;
@@ -1403,6 +1331,54 @@
             this.ShinyLeaf.TabIndex = 116;
             this.ShinyLeaf.Value = 0;
             // 
+            // FLP_CatchRate
+            // 
+            this.FLP_CatchRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.FLP_CatchRate.Controls.Add(this.L_CatchRate);
+            this.FLP_CatchRate.Controls.Add(this.CR_PK1);
+            this.FLP_CatchRate.Location = new System.Drawing.Point(0, 415);
+            this.FLP_CatchRate.Margin = new System.Windows.Forms.Padding(0);
+            this.FLP_CatchRate.Name = "FLP_CatchRate";
+            this.FLP_CatchRate.Size = new System.Drawing.Size(272, 25);
+            this.FLP_CatchRate.TabIndex = 116;
+            // 
+            // L_CatchRate
+            // 
+            this.L_CatchRate.Location = new System.Drawing.Point(0, 0);
+            this.L_CatchRate.Margin = new System.Windows.Forms.Padding(0);
+            this.L_CatchRate.Name = "L_CatchRate";
+            this.L_CatchRate.Size = new System.Drawing.Size(110, 21);
+            this.L_CatchRate.TabIndex = 9;
+            this.L_CatchRate.Text = "Catch Rate:";
+            this.L_CatchRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CR_PK1
+            // 
+            this.CR_PK1.Location = new System.Drawing.Point(110, 0);
+            this.CR_PK1.Margin = new System.Windows.Forms.Padding(0);
+            this.CR_PK1.Name = "CR_PK1";
+            this.CR_PK1.Size = new System.Drawing.Size(162, 25);
+            this.CR_PK1.TabIndex = 10;
+            // 
+            // FLP_SizeCP
+            // 
+            this.FLP_SizeCP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.FLP_SizeCP.Controls.Add(this.SizeCP);
+            this.FLP_SizeCP.Location = new System.Drawing.Point(0, 440);
+            this.FLP_SizeCP.Margin = new System.Windows.Forms.Padding(0);
+            this.FLP_SizeCP.Name = "FLP_SizeCP";
+            this.FLP_SizeCP.Size = new System.Drawing.Size(272, 72);
+            this.FLP_SizeCP.TabIndex = 117;
+            // 
+            // SizeCP
+            // 
+            this.SizeCP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SizeCP.Location = new System.Drawing.Point(50, 0);
+            this.SizeCP.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.SizeCP.Name = "SizeCP";
+            this.SizeCP.Size = new System.Drawing.Size(204, 68);
+            this.SizeCP.TabIndex = 0;
+            // 
             // Tab_Met
             // 
             this.Tab_Met.AllowDrop = true;
@@ -1412,7 +1388,7 @@
             this.Tab_Met.Location = new System.Drawing.Point(4, 22);
             this.Tab_Met.Name = "Tab_Met";
             this.Tab_Met.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Met.Size = new System.Drawing.Size(272, 462);
+            this.Tab_Met.Size = new System.Drawing.Size(192, 74);
             this.Tab_Met.TabIndex = 1;
             this.Tab_Met.Text = "Met";
             this.Tab_Met.UseVisualStyleBackColor = true;
@@ -1778,12 +1754,10 @@
             this.L_MetTimeOfDay.TabIndex = 10;
             this.L_MetTimeOfDay.Text = "Time of Day:";
             this.L_MetTimeOfDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_MetTimeOfDay.Visible = false;
             // 
             // CB_MetTimeOfDay
             // 
-            this.CB_MetTimeOfDay.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CB_MetTimeOfDay.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CB_MetTimeOfDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_MetTimeOfDay.DropDownWidth = 150;
             this.CB_MetTimeOfDay.FormattingEnabled = true;
             this.CB_MetTimeOfDay.Items.AddRange(new object[] {
@@ -1796,751 +1770,46 @@
             this.CB_MetTimeOfDay.Name = "CB_MetTimeOfDay";
             this.CB_MetTimeOfDay.Size = new System.Drawing.Size(126, 21);
             this.CB_MetTimeOfDay.TabIndex = 11;
-            this.CB_MetTimeOfDay.Visible = false;
-            this.CB_MetTimeOfDay.SelectedIndexChanged += new System.EventHandler(this.ValidateComboBox2);
-            this.CB_MetTimeOfDay.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateComboBox);
             // 
             // Tab_Stats
             // 
             this.Tab_Stats.AllowDrop = true;
+            this.Tab_Stats.Controls.Add(this.Stats);
             this.Tab_Stats.Controls.Add(this.Contest);
-            this.Tab_Stats.Controls.Add(this.FLP_Stats);
-            this.Tab_Stats.Controls.Add(this.BTN_RandomEVs);
-            this.Tab_Stats.Controls.Add(this.BTN_RandomIVs);
             this.Tab_Stats.Location = new System.Drawing.Point(4, 22);
             this.Tab_Stats.Name = "Tab_Stats";
             this.Tab_Stats.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Stats.Size = new System.Drawing.Size(272, 462);
+            this.Tab_Stats.Size = new System.Drawing.Size(192, 74);
             this.Tab_Stats.TabIndex = 2;
             this.Tab_Stats.Text = "Stats";
             this.Tab_Stats.UseVisualStyleBackColor = true;
             // 
+            // Stats
+            // 
+            this.Stats.EVsFishy = System.Drawing.Color.LightYellow;
+            this.Stats.EVsInvalid = System.Drawing.Color.Red;
+            this.Stats.EVsMaxed = System.Drawing.Color.Honeydew;
+            this.Stats.Location = new System.Drawing.Point(0, 0);
+            this.Stats.Name = "Stats";
+            this.Stats.Size = new System.Drawing.Size(270, 240);
+            this.Stats.StatDecreased = System.Drawing.Color.Blue;
+            this.Stats.StatHyperTrained = System.Drawing.Color.LightGreen;
+            this.Stats.StatIncreased = System.Drawing.Color.Red;
+            this.Stats.TabIndex = 118;
+            // 
             // Contest
             // 
-            this.Contest.Beauty = 0;
-            this.Contest.Cool = 0;
-            this.Contest.Cute = 0;
+            this.Contest.CNT_Beauty = 0;
+            this.Contest.CNT_Cool = 0;
+            this.Contest.CNT_Cute = 0;
+            this.Contest.CNT_Sheen = 0;
+            this.Contest.CNT_Smart = 0;
+            this.Contest.CNT_Tough = 0;
             this.Contest.Location = new System.Drawing.Point(21, 247);
             this.Contest.Margin = new System.Windows.Forms.Padding(0);
             this.Contest.Name = "Contest";
-            this.Contest.Sheen = 0;
             this.Contest.Size = new System.Drawing.Size(230, 50);
-            this.Contest.Smart = 0;
             this.Contest.TabIndex = 117;
-            this.Contest.Tough = 0;
-            // 
-            // FLP_Stats
-            // 
-            this.FLP_Stats.Controls.Add(this.FLP_StatHeader);
-            this.FLP_Stats.Controls.Add(this.FLP_HP);
-            this.FLP_Stats.Controls.Add(this.FLP_Atk);
-            this.FLP_Stats.Controls.Add(this.FLP_Def);
-            this.FLP_Stats.Controls.Add(this.FLP_SpA);
-            this.FLP_Stats.Controls.Add(this.FLP_SpD);
-            this.FLP_Stats.Controls.Add(this.FLP_Spe);
-            this.FLP_Stats.Controls.Add(this.FLP_StatsTotal);
-            this.FLP_Stats.Controls.Add(this.FLP_HPType);
-            this.FLP_Stats.Controls.Add(this.FLP_Characteristic);
-            this.FLP_Stats.Location = new System.Drawing.Point(0, 2);
-            this.FLP_Stats.Name = "FLP_Stats";
-            this.FLP_Stats.Size = new System.Drawing.Size(272, 206);
-            this.FLP_Stats.TabIndex = 103;
-            // 
-            // FLP_StatHeader
-            // 
-            this.FLP_StatHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_StatHeader.Controls.Add(this.FLP_HackedStats);
-            this.FLP_StatHeader.Controls.Add(this.FLP_StatsHeaderRight);
-            this.FLP_StatHeader.Location = new System.Drawing.Point(0, 0);
-            this.FLP_StatHeader.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_StatHeader.Name = "FLP_StatHeader";
-            this.FLP_StatHeader.Size = new System.Drawing.Size(272, 22);
-            this.FLP_StatHeader.TabIndex = 122;
-            // 
-            // FLP_HackedStats
-            // 
-            this.FLP_HackedStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_HackedStats.Controls.Add(this.CHK_HackedStats);
-            this.FLP_HackedStats.Location = new System.Drawing.Point(0, 0);
-            this.FLP_HackedStats.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_HackedStats.Name = "FLP_HackedStats";
-            this.FLP_HackedStats.Size = new System.Drawing.Size(107, 21);
-            this.FLP_HackedStats.TabIndex = 122;
-            // 
-            // CHK_HackedStats
-            // 
-            this.CHK_HackedStats.AutoSize = true;
-            this.CHK_HackedStats.Enabled = false;
-            this.CHK_HackedStats.Location = new System.Drawing.Point(0, 3);
-            this.CHK_HackedStats.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.CHK_HackedStats.Name = "CHK_HackedStats";
-            this.CHK_HackedStats.Size = new System.Drawing.Size(91, 17);
-            this.CHK_HackedStats.TabIndex = 18;
-            this.CHK_HackedStats.Text = "Hacked Stats";
-            this.CHK_HackedStats.UseVisualStyleBackColor = true;
-            this.CHK_HackedStats.Visible = false;
-            this.CHK_HackedStats.Click += new System.EventHandler(this.UpdateHackedStats);
-            // 
-            // FLP_StatsHeaderRight
-            // 
-            this.FLP_StatsHeaderRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_StatsHeaderRight.Controls.Add(this.Label_IVs);
-            this.FLP_StatsHeaderRight.Controls.Add(this.Label_EVs);
-            this.FLP_StatsHeaderRight.Controls.Add(this.Label_Stats);
-            this.FLP_StatsHeaderRight.Location = new System.Drawing.Point(107, 0);
-            this.FLP_StatsHeaderRight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_StatsHeaderRight.Name = "FLP_StatsHeaderRight";
-            this.FLP_StatsHeaderRight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_StatsHeaderRight.TabIndex = 123;
-            // 
-            // Label_IVs
-            // 
-            this.Label_IVs.Location = new System.Drawing.Point(0, 0);
-            this.Label_IVs.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_IVs.Name = "Label_IVs";
-            this.Label_IVs.Size = new System.Drawing.Size(30, 21);
-            this.Label_IVs.TabIndex = 29;
-            this.Label_IVs.Text = "IVs";
-            this.Label_IVs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Label_EVs
-            // 
-            this.Label_EVs.Location = new System.Drawing.Point(30, 0);
-            this.Label_EVs.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_EVs.Name = "Label_EVs";
-            this.Label_EVs.Size = new System.Drawing.Size(35, 21);
-            this.Label_EVs.TabIndex = 27;
-            this.Label_EVs.Text = "EVs";
-            this.Label_EVs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Label_Stats
-            // 
-            this.Label_Stats.Location = new System.Drawing.Point(65, 0);
-            this.Label_Stats.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_Stats.Name = "Label_Stats";
-            this.Label_Stats.Size = new System.Drawing.Size(35, 21);
-            this.Label_Stats.TabIndex = 28;
-            this.Label_Stats.Text = "Stats";
-            this.Label_Stats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // FLP_HP
-            // 
-            this.FLP_HP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_HP.Controls.Add(this.Label_HP);
-            this.FLP_HP.Controls.Add(this.FLP_HPRight);
-            this.FLP_HP.Location = new System.Drawing.Point(0, 22);
-            this.FLP_HP.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_HP.Name = "FLP_HP";
-            this.FLP_HP.Size = new System.Drawing.Size(272, 21);
-            this.FLP_HP.TabIndex = 123;
-            // 
-            // Label_HP
-            // 
-            this.Label_HP.Location = new System.Drawing.Point(0, 0);
-            this.Label_HP.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_HP.Name = "Label_HP";
-            this.Label_HP.Size = new System.Drawing.Size(110, 21);
-            this.Label_HP.TabIndex = 19;
-            this.Label_HP.Text = "HP:";
-            this.Label_HP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_HP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickStatLabel);
-            // 
-            // FLP_HPRight
-            // 
-            this.FLP_HPRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_HPRight.Controls.Add(this.TB_HPIV);
-            this.FLP_HPRight.Controls.Add(this.TB_HPEV);
-            this.FLP_HPRight.Controls.Add(this.Stat_HP);
-            this.FLP_HPRight.Location = new System.Drawing.Point(110, 0);
-            this.FLP_HPRight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_HPRight.Name = "FLP_HPRight";
-            this.FLP_HPRight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_HPRight.TabIndex = 121;
-            // 
-            // TB_HPIV
-            // 
-            this.TB_HPIV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_HPIV.Location = new System.Drawing.Point(0, 0);
-            this.TB_HPIV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.TB_HPIV.Mask = "00";
-            this.TB_HPIV.Name = "TB_HPIV";
-            this.TB_HPIV.Size = new System.Drawing.Size(22, 20);
-            this.TB_HPIV.TabIndex = 1;
-            this.TB_HPIV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_HPIV.Click += new System.EventHandler(this.ClickIV);
-            this.TB_HPIV.TextChanged += new System.EventHandler(this.UpdateIVs);
-            // 
-            // TB_HPEV
-            // 
-            this.TB_HPEV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_HPEV.Location = new System.Drawing.Point(28, 0);
-            this.TB_HPEV.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TB_HPEV.Mask = "000";
-            this.TB_HPEV.Name = "TB_HPEV";
-            this.TB_HPEV.Size = new System.Drawing.Size(28, 20);
-            this.TB_HPEV.TabIndex = 7;
-            this.TB_HPEV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_HPEV.Click += new System.EventHandler(this.ClickEV);
-            this.TB_HPEV.TextChanged += new System.EventHandler(this.UpdateEVs);
-            // 
-            // Stat_HP
-            // 
-            this.Stat_HP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Stat_HP.Enabled = false;
-            this.Stat_HP.Location = new System.Drawing.Point(62, 0);
-            this.Stat_HP.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.Stat_HP.Mask = "00000";
-            this.Stat_HP.Name = "Stat_HP";
-            this.Stat_HP.PromptChar = ' ';
-            this.Stat_HP.Size = new System.Drawing.Size(37, 20);
-            this.Stat_HP.TabIndex = 45;
-            this.Stat_HP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Stat_HP.TextChanged += new System.EventHandler(this.UpdateHackedStatText);
-            // 
-            // FLP_Atk
-            // 
-            this.FLP_Atk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_Atk.Controls.Add(this.Label_ATK);
-            this.FLP_Atk.Controls.Add(this.FLP_AtkRight);
-            this.FLP_Atk.Location = new System.Drawing.Point(0, 43);
-            this.FLP_Atk.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_Atk.Name = "FLP_Atk";
-            this.FLP_Atk.Size = new System.Drawing.Size(272, 21);
-            this.FLP_Atk.TabIndex = 124;
-            // 
-            // Label_ATK
-            // 
-            this.Label_ATK.Location = new System.Drawing.Point(0, 0);
-            this.Label_ATK.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_ATK.Name = "Label_ATK";
-            this.Label_ATK.Size = new System.Drawing.Size(110, 21);
-            this.Label_ATK.TabIndex = 20;
-            this.Label_ATK.Text = "Atk:";
-            this.Label_ATK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_ATK.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickStatLabel);
-            // 
-            // FLP_AtkRight
-            // 
-            this.FLP_AtkRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_AtkRight.Controls.Add(this.TB_ATKIV);
-            this.FLP_AtkRight.Controls.Add(this.TB_ATKEV);
-            this.FLP_AtkRight.Controls.Add(this.Stat_ATK);
-            this.FLP_AtkRight.Location = new System.Drawing.Point(110, 0);
-            this.FLP_AtkRight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_AtkRight.Name = "FLP_AtkRight";
-            this.FLP_AtkRight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_AtkRight.TabIndex = 123;
-            // 
-            // TB_ATKIV
-            // 
-            this.TB_ATKIV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_ATKIV.Location = new System.Drawing.Point(0, 0);
-            this.TB_ATKIV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.TB_ATKIV.Mask = "00";
-            this.TB_ATKIV.Name = "TB_ATKIV";
-            this.TB_ATKIV.Size = new System.Drawing.Size(22, 20);
-            this.TB_ATKIV.TabIndex = 2;
-            this.TB_ATKIV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_ATKIV.Click += new System.EventHandler(this.ClickIV);
-            this.TB_ATKIV.TextChanged += new System.EventHandler(this.UpdateIVs);
-            // 
-            // TB_ATKEV
-            // 
-            this.TB_ATKEV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_ATKEV.Location = new System.Drawing.Point(28, 0);
-            this.TB_ATKEV.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TB_ATKEV.Mask = "000";
-            this.TB_ATKEV.Name = "TB_ATKEV";
-            this.TB_ATKEV.Size = new System.Drawing.Size(28, 20);
-            this.TB_ATKEV.TabIndex = 8;
-            this.TB_ATKEV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_ATKEV.Click += new System.EventHandler(this.ClickEV);
-            this.TB_ATKEV.TextChanged += new System.EventHandler(this.UpdateEVs);
-            // 
-            // Stat_ATK
-            // 
-            this.Stat_ATK.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Stat_ATK.Enabled = false;
-            this.Stat_ATK.Location = new System.Drawing.Point(62, 0);
-            this.Stat_ATK.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.Stat_ATK.Mask = "00000";
-            this.Stat_ATK.Name = "Stat_ATK";
-            this.Stat_ATK.PromptChar = ' ';
-            this.Stat_ATK.Size = new System.Drawing.Size(37, 20);
-            this.Stat_ATK.TabIndex = 46;
-            this.Stat_ATK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Stat_ATK.TextChanged += new System.EventHandler(this.UpdateHackedStatText);
-            // 
-            // FLP_Def
-            // 
-            this.FLP_Def.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_Def.Controls.Add(this.Label_DEF);
-            this.FLP_Def.Controls.Add(this.FLP_DefRight);
-            this.FLP_Def.Location = new System.Drawing.Point(0, 64);
-            this.FLP_Def.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_Def.Name = "FLP_Def";
-            this.FLP_Def.Size = new System.Drawing.Size(272, 21);
-            this.FLP_Def.TabIndex = 125;
-            // 
-            // Label_DEF
-            // 
-            this.Label_DEF.Location = new System.Drawing.Point(0, 0);
-            this.Label_DEF.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_DEF.Name = "Label_DEF";
-            this.Label_DEF.Size = new System.Drawing.Size(110, 21);
-            this.Label_DEF.TabIndex = 21;
-            this.Label_DEF.Text = "Def:";
-            this.Label_DEF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_DEF.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickStatLabel);
-            // 
-            // FLP_DefRight
-            // 
-            this.FLP_DefRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_DefRight.Controls.Add(this.TB_DEFIV);
-            this.FLP_DefRight.Controls.Add(this.TB_DEFEV);
-            this.FLP_DefRight.Controls.Add(this.Stat_DEF);
-            this.FLP_DefRight.Location = new System.Drawing.Point(110, 0);
-            this.FLP_DefRight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_DefRight.Name = "FLP_DefRight";
-            this.FLP_DefRight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_DefRight.TabIndex = 123;
-            // 
-            // TB_DEFIV
-            // 
-            this.TB_DEFIV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_DEFIV.Location = new System.Drawing.Point(0, 0);
-            this.TB_DEFIV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.TB_DEFIV.Mask = "00";
-            this.TB_DEFIV.Name = "TB_DEFIV";
-            this.TB_DEFIV.Size = new System.Drawing.Size(22, 20);
-            this.TB_DEFIV.TabIndex = 3;
-            this.TB_DEFIV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_DEFIV.Click += new System.EventHandler(this.ClickIV);
-            this.TB_DEFIV.TextChanged += new System.EventHandler(this.UpdateIVs);
-            // 
-            // TB_DEFEV
-            // 
-            this.TB_DEFEV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_DEFEV.Location = new System.Drawing.Point(28, 0);
-            this.TB_DEFEV.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TB_DEFEV.Mask = "000";
-            this.TB_DEFEV.Name = "TB_DEFEV";
-            this.TB_DEFEV.Size = new System.Drawing.Size(28, 20);
-            this.TB_DEFEV.TabIndex = 9;
-            this.TB_DEFEV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_DEFEV.Click += new System.EventHandler(this.ClickEV);
-            this.TB_DEFEV.TextChanged += new System.EventHandler(this.UpdateEVs);
-            // 
-            // Stat_DEF
-            // 
-            this.Stat_DEF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Stat_DEF.Enabled = false;
-            this.Stat_DEF.Location = new System.Drawing.Point(62, 0);
-            this.Stat_DEF.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.Stat_DEF.Mask = "00000";
-            this.Stat_DEF.Name = "Stat_DEF";
-            this.Stat_DEF.PromptChar = ' ';
-            this.Stat_DEF.Size = new System.Drawing.Size(37, 20);
-            this.Stat_DEF.TabIndex = 47;
-            this.Stat_DEF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Stat_DEF.TextChanged += new System.EventHandler(this.UpdateHackedStatText);
-            // 
-            // FLP_SpA
-            // 
-            this.FLP_SpA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_SpA.Controls.Add(this.FLP_SpALeft);
-            this.FLP_SpA.Controls.Add(this.FLP_SpARight);
-            this.FLP_SpA.Location = new System.Drawing.Point(0, 85);
-            this.FLP_SpA.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_SpA.Name = "FLP_SpA";
-            this.FLP_SpA.Size = new System.Drawing.Size(272, 21);
-            this.FLP_SpA.TabIndex = 126;
-            // 
-            // FLP_SpALeft
-            // 
-            this.FLP_SpALeft.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.FLP_SpALeft.Controls.Add(this.Label_SPA);
-            this.FLP_SpALeft.Controls.Add(this.Label_SPC);
-            this.FLP_SpALeft.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.FLP_SpALeft.Location = new System.Drawing.Point(0, 0);
-            this.FLP_SpALeft.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_SpALeft.Name = "FLP_SpALeft";
-            this.FLP_SpALeft.Size = new System.Drawing.Size(110, 21);
-            this.FLP_SpALeft.TabIndex = 124;
-            // 
-            // Label_SPA
-            // 
-            this.Label_SPA.Location = new System.Drawing.Point(0, 0);
-            this.Label_SPA.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_SPA.Name = "Label_SPA";
-            this.Label_SPA.Size = new System.Drawing.Size(110, 21);
-            this.Label_SPA.TabIndex = 22;
-            this.Label_SPA.Text = "SpA:";
-            this.Label_SPA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_SPA.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickStatLabel);
-            // 
-            // Label_SPC
-            // 
-            this.Label_SPC.Location = new System.Drawing.Point(0, 21);
-            this.Label_SPC.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_SPC.Name = "Label_SPC";
-            this.Label_SPC.Size = new System.Drawing.Size(110, 21);
-            this.Label_SPC.TabIndex = 125;
-            this.Label_SPC.Text = "SpC:";
-            this.Label_SPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FLP_SpARight
-            // 
-            this.FLP_SpARight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_SpARight.Controls.Add(this.TB_SPAIV);
-            this.FLP_SpARight.Controls.Add(this.TB_SPAEV);
-            this.FLP_SpARight.Controls.Add(this.Stat_SPA);
-            this.FLP_SpARight.Location = new System.Drawing.Point(110, 0);
-            this.FLP_SpARight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_SpARight.Name = "FLP_SpARight";
-            this.FLP_SpARight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_SpARight.TabIndex = 123;
-            // 
-            // TB_SPAIV
-            // 
-            this.TB_SPAIV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_SPAIV.Location = new System.Drawing.Point(0, 0);
-            this.TB_SPAIV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.TB_SPAIV.Mask = "00";
-            this.TB_SPAIV.Name = "TB_SPAIV";
-            this.TB_SPAIV.Size = new System.Drawing.Size(22, 20);
-            this.TB_SPAIV.TabIndex = 4;
-            this.TB_SPAIV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_SPAIV.Click += new System.EventHandler(this.ClickIV);
-            this.TB_SPAIV.TextChanged += new System.EventHandler(this.UpdateIVs);
-            // 
-            // TB_SPAEV
-            // 
-            this.TB_SPAEV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_SPAEV.Location = new System.Drawing.Point(28, 0);
-            this.TB_SPAEV.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TB_SPAEV.Mask = "000";
-            this.TB_SPAEV.Name = "TB_SPAEV";
-            this.TB_SPAEV.Size = new System.Drawing.Size(28, 20);
-            this.TB_SPAEV.TabIndex = 10;
-            this.TB_SPAEV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_SPAEV.Click += new System.EventHandler(this.ClickEV);
-            this.TB_SPAEV.TextChanged += new System.EventHandler(this.UpdateEVs);
-            // 
-            // Stat_SPA
-            // 
-            this.Stat_SPA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Stat_SPA.Enabled = false;
-            this.Stat_SPA.Location = new System.Drawing.Point(62, 0);
-            this.Stat_SPA.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.Stat_SPA.Mask = "00000";
-            this.Stat_SPA.Name = "Stat_SPA";
-            this.Stat_SPA.PromptChar = ' ';
-            this.Stat_SPA.Size = new System.Drawing.Size(37, 20);
-            this.Stat_SPA.TabIndex = 48;
-            this.Stat_SPA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Stat_SPA.TextChanged += new System.EventHandler(this.UpdateHackedStatText);
-            // 
-            // FLP_SpD
-            // 
-            this.FLP_SpD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_SpD.Controls.Add(this.Label_SPD);
-            this.FLP_SpD.Controls.Add(this.FLP_SpDRight);
-            this.FLP_SpD.Location = new System.Drawing.Point(0, 106);
-            this.FLP_SpD.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_SpD.Name = "FLP_SpD";
-            this.FLP_SpD.Size = new System.Drawing.Size(272, 21);
-            this.FLP_SpD.TabIndex = 127;
-            // 
-            // Label_SPD
-            // 
-            this.Label_SPD.Location = new System.Drawing.Point(0, 0);
-            this.Label_SPD.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_SPD.Name = "Label_SPD";
-            this.Label_SPD.Size = new System.Drawing.Size(110, 21);
-            this.Label_SPD.TabIndex = 23;
-            this.Label_SPD.Text = "SpD:";
-            this.Label_SPD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_SPD.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickStatLabel);
-            // 
-            // FLP_SpDRight
-            // 
-            this.FLP_SpDRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_SpDRight.Controls.Add(this.TB_SPDIV);
-            this.FLP_SpDRight.Controls.Add(this.TB_SPDEV);
-            this.FLP_SpDRight.Controls.Add(this.Stat_SPD);
-            this.FLP_SpDRight.Location = new System.Drawing.Point(110, 0);
-            this.FLP_SpDRight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_SpDRight.Name = "FLP_SpDRight";
-            this.FLP_SpDRight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_SpDRight.TabIndex = 123;
-            // 
-            // TB_SPDIV
-            // 
-            this.TB_SPDIV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_SPDIV.Location = new System.Drawing.Point(0, 0);
-            this.TB_SPDIV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.TB_SPDIV.Mask = "00";
-            this.TB_SPDIV.Name = "TB_SPDIV";
-            this.TB_SPDIV.Size = new System.Drawing.Size(22, 20);
-            this.TB_SPDIV.TabIndex = 5;
-            this.TB_SPDIV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_SPDIV.Click += new System.EventHandler(this.ClickIV);
-            this.TB_SPDIV.TextChanged += new System.EventHandler(this.UpdateIVs);
-            // 
-            // TB_SPDEV
-            // 
-            this.TB_SPDEV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_SPDEV.Location = new System.Drawing.Point(28, 0);
-            this.TB_SPDEV.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TB_SPDEV.Mask = "000";
-            this.TB_SPDEV.Name = "TB_SPDEV";
-            this.TB_SPDEV.Size = new System.Drawing.Size(28, 20);
-            this.TB_SPDEV.TabIndex = 11;
-            this.TB_SPDEV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_SPDEV.Click += new System.EventHandler(this.ClickEV);
-            this.TB_SPDEV.TextChanged += new System.EventHandler(this.UpdateEVs);
-            // 
-            // Stat_SPD
-            // 
-            this.Stat_SPD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Stat_SPD.Enabled = false;
-            this.Stat_SPD.Location = new System.Drawing.Point(62, 0);
-            this.Stat_SPD.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.Stat_SPD.Mask = "00000";
-            this.Stat_SPD.Name = "Stat_SPD";
-            this.Stat_SPD.PromptChar = ' ';
-            this.Stat_SPD.Size = new System.Drawing.Size(37, 20);
-            this.Stat_SPD.TabIndex = 49;
-            this.Stat_SPD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Stat_SPD.TextChanged += new System.EventHandler(this.UpdateHackedStatText);
-            // 
-            // FLP_Spe
-            // 
-            this.FLP_Spe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_Spe.Controls.Add(this.Label_SPE);
-            this.FLP_Spe.Controls.Add(this.FLP_SpeRight);
-            this.FLP_Spe.Location = new System.Drawing.Point(0, 127);
-            this.FLP_Spe.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_Spe.Name = "FLP_Spe";
-            this.FLP_Spe.Size = new System.Drawing.Size(272, 21);
-            this.FLP_Spe.TabIndex = 128;
-            // 
-            // Label_SPE
-            // 
-            this.Label_SPE.Location = new System.Drawing.Point(0, 0);
-            this.Label_SPE.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_SPE.Name = "Label_SPE";
-            this.Label_SPE.Size = new System.Drawing.Size(110, 21);
-            this.Label_SPE.TabIndex = 24;
-            this.Label_SPE.Text = "Spe:";
-            this.Label_SPE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_SPE.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickStatLabel);
-            // 
-            // FLP_SpeRight
-            // 
-            this.FLP_SpeRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_SpeRight.Controls.Add(this.TB_SPEIV);
-            this.FLP_SpeRight.Controls.Add(this.TB_SPEEV);
-            this.FLP_SpeRight.Controls.Add(this.Stat_SPE);
-            this.FLP_SpeRight.Location = new System.Drawing.Point(110, 0);
-            this.FLP_SpeRight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_SpeRight.Name = "FLP_SpeRight";
-            this.FLP_SpeRight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_SpeRight.TabIndex = 123;
-            // 
-            // TB_SPEIV
-            // 
-            this.TB_SPEIV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_SPEIV.Location = new System.Drawing.Point(0, 0);
-            this.TB_SPEIV.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.TB_SPEIV.Mask = "00";
-            this.TB_SPEIV.Name = "TB_SPEIV";
-            this.TB_SPEIV.Size = new System.Drawing.Size(22, 20);
-            this.TB_SPEIV.TabIndex = 6;
-            this.TB_SPEIV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_SPEIV.Click += new System.EventHandler(this.ClickIV);
-            this.TB_SPEIV.TextChanged += new System.EventHandler(this.UpdateIVs);
-            // 
-            // TB_SPEEV
-            // 
-            this.TB_SPEEV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_SPEEV.Location = new System.Drawing.Point(28, 0);
-            this.TB_SPEEV.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TB_SPEEV.Mask = "000";
-            this.TB_SPEEV.Name = "TB_SPEEV";
-            this.TB_SPEEV.Size = new System.Drawing.Size(28, 20);
-            this.TB_SPEEV.TabIndex = 12;
-            this.TB_SPEEV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_SPEEV.Click += new System.EventHandler(this.ClickEV);
-            this.TB_SPEEV.TextChanged += new System.EventHandler(this.UpdateEVs);
-            // 
-            // Stat_SPE
-            // 
-            this.Stat_SPE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Stat_SPE.Enabled = false;
-            this.Stat_SPE.Location = new System.Drawing.Point(62, 0);
-            this.Stat_SPE.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.Stat_SPE.Mask = "00000";
-            this.Stat_SPE.Name = "Stat_SPE";
-            this.Stat_SPE.PromptChar = ' ';
-            this.Stat_SPE.Size = new System.Drawing.Size(37, 20);
-            this.Stat_SPE.TabIndex = 50;
-            this.Stat_SPE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Stat_SPE.TextChanged += new System.EventHandler(this.UpdateHackedStatText);
-            // 
-            // FLP_StatsTotal
-            // 
-            this.FLP_StatsTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_StatsTotal.Controls.Add(this.Label_Total);
-            this.FLP_StatsTotal.Controls.Add(this.FLP_StatsTotalRight);
-            this.FLP_StatsTotal.Location = new System.Drawing.Point(0, 148);
-            this.FLP_StatsTotal.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_StatsTotal.Name = "FLP_StatsTotal";
-            this.FLP_StatsTotal.Size = new System.Drawing.Size(272, 21);
-            this.FLP_StatsTotal.TabIndex = 129;
-            // 
-            // Label_Total
-            // 
-            this.Label_Total.Location = new System.Drawing.Point(0, 0);
-            this.Label_Total.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_Total.Name = "Label_Total";
-            this.Label_Total.Size = new System.Drawing.Size(110, 21);
-            this.Label_Total.TabIndex = 25;
-            this.Label_Total.Text = "Total:";
-            this.Label_Total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FLP_StatsTotalRight
-            // 
-            this.FLP_StatsTotalRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_StatsTotalRight.Controls.Add(this.TB_IVTotal);
-            this.FLP_StatsTotalRight.Controls.Add(this.TB_EVTotal);
-            this.FLP_StatsTotalRight.Controls.Add(this.L_Potential);
-            this.FLP_StatsTotalRight.Location = new System.Drawing.Point(110, 0);
-            this.FLP_StatsTotalRight.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_StatsTotalRight.Name = "FLP_StatsTotalRight";
-            this.FLP_StatsTotalRight.Size = new System.Drawing.Size(162, 21);
-            this.FLP_StatsTotalRight.TabIndex = 123;
-            // 
-            // TB_IVTotal
-            // 
-            this.TB_IVTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_IVTotal.Location = new System.Drawing.Point(0, 0);
-            this.TB_IVTotal.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.TB_IVTotal.MaxLength = 3;
-            this.TB_IVTotal.Name = "TB_IVTotal";
-            this.TB_IVTotal.ReadOnly = true;
-            this.TB_IVTotal.Size = new System.Drawing.Size(22, 20);
-            this.TB_IVTotal.TabIndex = 41;
-            this.TB_IVTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // TB_EVTotal
-            // 
-            this.TB_EVTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_EVTotal.Location = new System.Drawing.Point(28, 0);
-            this.TB_EVTotal.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TB_EVTotal.MaxLength = 3;
-            this.TB_EVTotal.Name = "TB_EVTotal";
-            this.TB_EVTotal.ReadOnly = true;
-            this.TB_EVTotal.Size = new System.Drawing.Size(28, 20);
-            this.TB_EVTotal.TabIndex = 18;
-            this.TB_EVTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // L_Potential
-            // 
-            this.L_Potential.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_Potential.Location = new System.Drawing.Point(59, 0);
-            this.L_Potential.Margin = new System.Windows.Forms.Padding(0);
-            this.L_Potential.Name = "L_Potential";
-            this.L_Potential.Size = new System.Drawing.Size(67, 21);
-            this.L_Potential.TabIndex = 42;
-            this.L_Potential.Text = "(potential)";
-            this.L_Potential.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // FLP_HPType
-            // 
-            this.FLP_HPType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_HPType.Controls.Add(this.Label_HiddenPowerPrefix);
-            this.FLP_HPType.Controls.Add(this.CB_HPType);
-            this.FLP_HPType.Location = new System.Drawing.Point(0, 169);
-            this.FLP_HPType.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_HPType.Name = "FLP_HPType";
-            this.FLP_HPType.Size = new System.Drawing.Size(272, 21);
-            this.FLP_HPType.TabIndex = 130;
-            // 
-            // Label_HiddenPowerPrefix
-            // 
-            this.Label_HiddenPowerPrefix.Location = new System.Drawing.Point(0, 0);
-            this.Label_HiddenPowerPrefix.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_HiddenPowerPrefix.Name = "Label_HiddenPowerPrefix";
-            this.Label_HiddenPowerPrefix.Size = new System.Drawing.Size(172, 21);
-            this.Label_HiddenPowerPrefix.TabIndex = 29;
-            this.Label_HiddenPowerPrefix.Text = "Hidden Power Type:";
-            this.Label_HiddenPowerPrefix.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // CB_HPType
-            // 
-            this.CB_HPType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CB_HPType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_HPType.DropDownWidth = 80;
-            this.CB_HPType.FormattingEnabled = true;
-            this.CB_HPType.Location = new System.Drawing.Point(172, 0);
-            this.CB_HPType.Margin = new System.Windows.Forms.Padding(0);
-            this.CB_HPType.Name = "CB_HPType";
-            this.CB_HPType.Size = new System.Drawing.Size(70, 21);
-            this.CB_HPType.TabIndex = 44;
-            this.CB_HPType.SelectedIndexChanged += new System.EventHandler(this.UpdateHPType);
-            // 
-            // FLP_Characteristic
-            // 
-            this.FLP_Characteristic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.FLP_Characteristic.Controls.Add(this.Label_CharacteristicPrefix);
-            this.FLP_Characteristic.Controls.Add(this.L_Characteristic);
-            this.FLP_Characteristic.Location = new System.Drawing.Point(0, 190);
-            this.FLP_Characteristic.Margin = new System.Windows.Forms.Padding(0);
-            this.FLP_Characteristic.Name = "FLP_Characteristic";
-            this.FLP_Characteristic.Size = new System.Drawing.Size(272, 21);
-            this.FLP_Characteristic.TabIndex = 131;
-            // 
-            // Label_CharacteristicPrefix
-            // 
-            this.Label_CharacteristicPrefix.Location = new System.Drawing.Point(0, 0);
-            this.Label_CharacteristicPrefix.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_CharacteristicPrefix.Name = "Label_CharacteristicPrefix";
-            this.Label_CharacteristicPrefix.Size = new System.Drawing.Size(110, 21);
-            this.Label_CharacteristicPrefix.TabIndex = 43;
-            this.Label_CharacteristicPrefix.Text = "Characteristic:";
-            this.Label_CharacteristicPrefix.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // L_Characteristic
-            // 
-            this.L_Characteristic.Location = new System.Drawing.Point(110, 0);
-            this.L_Characteristic.Margin = new System.Windows.Forms.Padding(0);
-            this.L_Characteristic.Name = "L_Characteristic";
-            this.L_Characteristic.Size = new System.Drawing.Size(150, 21);
-            this.L_Characteristic.TabIndex = 40;
-            this.L_Characteristic.Text = "(char)";
-            this.L_Characteristic.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // BTN_RandomEVs
-            // 
-            this.BTN_RandomEVs.Location = new System.Drawing.Point(140, 218);
-            this.BTN_RandomEVs.Name = "BTN_RandomEVs";
-            this.BTN_RandomEVs.Size = new System.Drawing.Size(92, 23);
-            this.BTN_RandomEVs.TabIndex = 14;
-            this.BTN_RandomEVs.Text = "Randomize EVs";
-            this.BTN_RandomEVs.UseVisualStyleBackColor = true;
-            this.BTN_RandomEVs.Click += new System.EventHandler(this.UpdateRandomEVs);
-            // 
-            // BTN_RandomIVs
-            // 
-            this.BTN_RandomIVs.Location = new System.Drawing.Point(41, 218);
-            this.BTN_RandomIVs.Name = "BTN_RandomIVs";
-            this.BTN_RandomIVs.Size = new System.Drawing.Size(92, 23);
-            this.BTN_RandomIVs.TabIndex = 13;
-            this.BTN_RandomIVs.Text = "Randomize IVs";
-            this.BTN_RandomIVs.UseVisualStyleBackColor = true;
-            this.BTN_RandomIVs.Click += new System.EventHandler(this.UpdateRandomIVs);
             // 
             // Tab_Attacks
             // 
@@ -2554,7 +1823,7 @@
             this.Tab_Attacks.Location = new System.Drawing.Point(4, 22);
             this.Tab_Attacks.Name = "Tab_Attacks";
             this.Tab_Attacks.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Attacks.Size = new System.Drawing.Size(272, 462);
+            this.Tab_Attacks.Size = new System.Drawing.Size(272, 539);
             this.Tab_Attacks.TabIndex = 3;
             this.Tab_Attacks.Text = "Attacks";
             this.Tab_Attacks.UseVisualStyleBackColor = true;
@@ -2839,13 +2108,17 @@
             // 
             this.CB_Move4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CB_Move4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_Move4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CB_Move4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CB_Move4.DropDownHeight = 392;
             this.CB_Move4.FormattingEnabled = true;
+            this.CB_Move4.IntegralHeight = false;
             this.CB_Move4.Location = new System.Drawing.Point(9, 92);
             this.CB_Move4.Name = "CB_Move4";
             this.CB_Move4.Size = new System.Drawing.Size(121, 21);
             this.CB_Move4.TabIndex = 10;
             this.CB_Move4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ValidateMovePaint);
+            this.CB_Move4.DropDown += new System.EventHandler(this.ValidateMoveDropDown);
+            this.CB_Move4.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.MeasureDropDownHeight);
             this.CB_Move4.SelectedIndexChanged += new System.EventHandler(this.ValidateMove);
             this.CB_Move4.Leave += new System.EventHandler(this.ValidateComboBox2);
             this.CB_Move4.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateComboBox);
@@ -2869,13 +2142,17 @@
             // 
             this.CB_Move3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CB_Move3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_Move3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CB_Move3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CB_Move3.DropDownHeight = 392;
             this.CB_Move3.FormattingEnabled = true;
+            this.CB_Move3.IntegralHeight = false;
             this.CB_Move3.Location = new System.Drawing.Point(9, 70);
             this.CB_Move3.Name = "CB_Move3";
             this.CB_Move3.Size = new System.Drawing.Size(121, 21);
             this.CB_Move3.TabIndex = 7;
             this.CB_Move3.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ValidateMovePaint);
+            this.CB_Move3.DropDown += new System.EventHandler(this.ValidateMoveDropDown);
+            this.CB_Move3.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.MeasureDropDownHeight);
             this.CB_Move3.SelectedIndexChanged += new System.EventHandler(this.ValidateMove);
             this.CB_Move3.Leave += new System.EventHandler(this.ValidateComboBox2);
             this.CB_Move3.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateComboBox);
@@ -2884,13 +2161,17 @@
             // 
             this.CB_Move2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CB_Move2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_Move2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CB_Move2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CB_Move2.DropDownHeight = 392;
             this.CB_Move2.FormattingEnabled = true;
+            this.CB_Move2.IntegralHeight = false;
             this.CB_Move2.Location = new System.Drawing.Point(9, 48);
             this.CB_Move2.Name = "CB_Move2";
             this.CB_Move2.Size = new System.Drawing.Size(121, 21);
             this.CB_Move2.TabIndex = 4;
             this.CB_Move2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ValidateMovePaint);
+            this.CB_Move2.DropDown += new System.EventHandler(this.ValidateMoveDropDown);
+            this.CB_Move2.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.MeasureDropDownHeight);
             this.CB_Move2.SelectedIndexChanged += new System.EventHandler(this.ValidateMove);
             this.CB_Move2.Leave += new System.EventHandler(this.ValidateComboBox2);
             this.CB_Move2.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateComboBox);
@@ -2899,13 +2180,17 @@
             // 
             this.CB_Move1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CB_Move1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_Move1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CB_Move1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CB_Move1.DropDownHeight = 392;
             this.CB_Move1.FormattingEnabled = true;
+            this.CB_Move1.IntegralHeight = false;
             this.CB_Move1.Location = new System.Drawing.Point(9, 26);
             this.CB_Move1.Name = "CB_Move1";
             this.CB_Move1.Size = new System.Drawing.Size(121, 21);
             this.CB_Move1.TabIndex = 1;
             this.CB_Move1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ValidateMovePaint);
+            this.CB_Move1.DropDown += new System.EventHandler(this.ValidateMoveDropDown);
+            this.CB_Move1.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.MeasureDropDownHeight);
             this.CB_Move1.SelectedIndexChanged += new System.EventHandler(this.ValidateMove);
             this.CB_Move1.Leave += new System.EventHandler(this.ValidateComboBox2);
             this.CB_Move1.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateComboBox);
@@ -2913,6 +2198,7 @@
             // Tab_OTMisc
             // 
             this.Tab_OTMisc.AllowDrop = true;
+            this.Tab_OTMisc.Controls.Add(this.PB_Favorite);
             this.Tab_OTMisc.Controls.Add(this.FLP_PKMEditors);
             this.Tab_OTMisc.Controls.Add(this.TB_EC);
             this.Tab_OTMisc.Controls.Add(this.GB_nOT);
@@ -2924,10 +2210,22 @@
             this.Tab_OTMisc.Location = new System.Drawing.Point(4, 22);
             this.Tab_OTMisc.Name = "Tab_OTMisc";
             this.Tab_OTMisc.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_OTMisc.Size = new System.Drawing.Size(272, 462);
+            this.Tab_OTMisc.Size = new System.Drawing.Size(192, 74);
             this.Tab_OTMisc.TabIndex = 4;
             this.Tab_OTMisc.Text = "OT/Misc";
             this.Tab_OTMisc.UseVisualStyleBackColor = true;
+            // 
+            // PB_Favorite
+            // 
+            this.PB_Favorite.Image = global::PKHeX.WinForms.Properties.Resources.icon_favo;
+            this.PB_Favorite.InitialImage = global::PKHeX.WinForms.Properties.Resources.icon_favo;
+            this.PB_Favorite.Location = new System.Drawing.Point(23, 198);
+            this.PB_Favorite.Name = "PB_Favorite";
+            this.PB_Favorite.Size = new System.Drawing.Size(40, 40);
+            this.PB_Favorite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Favorite.TabIndex = 10;
+            this.PB_Favorite.TabStop = false;
+            this.PB_Favorite.Click += new System.EventHandler(this.ClickFavorite);
             // 
             // FLP_PKMEditors
             // 
@@ -3063,7 +2361,7 @@
             // 
             // GB_Markings
             // 
-            this.GB_Markings.Controls.Add(this.PB_MarkHorohoro);
+            this.GB_Markings.Controls.Add(this.PB_MarkGO);
             this.GB_Markings.Controls.Add(this.PB_MarkVC);
             this.GB_Markings.Controls.Add(this.PB_MarkAlola);
             this.GB_Markings.Controls.Add(this.PB_Mark6);
@@ -3082,16 +2380,15 @@
             this.GB_Markings.TabStop = false;
             this.GB_Markings.Text = "Markings";
             // 
-            // PB_MarkHorohoro
+            // PB_MarkGO
             // 
-            this.PB_MarkHorohoro.Image = ((System.Drawing.Image)(resources.GetObject("PB_MarkHorohoro.Image")));
-            this.PB_MarkHorohoro.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_MarkHorohoro.InitialImage")));
-            this.PB_MarkHorohoro.Location = new System.Drawing.Point(110, 15);
-            this.PB_MarkHorohoro.Name = "PB_MarkHorohoro";
-            this.PB_MarkHorohoro.Size = new System.Drawing.Size(20, 20);
-            this.PB_MarkHorohoro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_MarkHorohoro.TabIndex = 11;
-            this.PB_MarkHorohoro.TabStop = false;
+            this.PB_MarkGO.InitialImage = null;
+            this.PB_MarkGO.Location = new System.Drawing.Point(110, 15);
+            this.PB_MarkGO.Name = "PB_MarkGO";
+            this.PB_MarkGO.Size = new System.Drawing.Size(20, 20);
+            this.PB_MarkGO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_MarkGO.TabIndex = 11;
+            this.PB_MarkGO.TabStop = false;
             // 
             // PB_MarkVC
             // 
@@ -3259,19 +2556,23 @@
             // 
             // GB_OT
             // 
+            this.GB_OT.Controls.Add(this.TID_Trainer);
             this.GB_OT.Controls.Add(this.Label_OTGender);
             this.GB_OT.Controls.Add(this.TB_OT);
-            this.GB_OT.Controls.Add(this.TB_SID);
-            this.GB_OT.Controls.Add(this.TB_TID);
             this.GB_OT.Controls.Add(this.Label_OT);
-            this.GB_OT.Controls.Add(this.Label_SID);
-            this.GB_OT.Controls.Add(this.Label_TID);
             this.GB_OT.Location = new System.Drawing.Point(40, 8);
             this.GB_OT.Name = "GB_OT";
             this.GB_OT.Size = new System.Drawing.Size(190, 75);
             this.GB_OT.TabIndex = 1;
             this.GB_OT.TabStop = false;
             this.GB_OT.Text = "Trainer Information";
+            // 
+            // TID_Trainer
+            // 
+            this.TID_Trainer.Location = new System.Drawing.Point(13, 18);
+            this.TID_Trainer.Name = "TID_Trainer";
+            this.TID_Trainer.Size = new System.Drawing.Size(178, 27);
+            this.TID_Trainer.TabIndex = 57;
             // 
             // Label_OTGender
             // 
@@ -3294,30 +2595,6 @@
             this.TB_OT.TabIndex = 3;
             this.TB_OT.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UpdateNicknameClick);
             // 
-            // TB_SID
-            // 
-            this.TB_SID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_SID.Location = new System.Drawing.Point(132, 20);
-            this.TB_SID.Mask = "00000";
-            this.TB_SID.Name = "TB_SID";
-            this.TB_SID.Size = new System.Drawing.Size(40, 20);
-            this.TB_SID.TabIndex = 2;
-            this.TB_SID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_SID.MouseHover += new System.EventHandler(this.UpdateTSV);
-            this.TB_SID.Validated += new System.EventHandler(this.Update_ID);
-            // 
-            // TB_TID
-            // 
-            this.TB_TID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_TID.Location = new System.Drawing.Point(46, 20);
-            this.TB_TID.Mask = "00000";
-            this.TB_TID.Name = "TB_TID";
-            this.TB_TID.Size = new System.Drawing.Size(40, 20);
-            this.TB_TID.TabIndex = 1;
-            this.TB_TID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TB_TID.MouseHover += new System.EventHandler(this.UpdateTSV);
-            this.TB_TID.Validated += new System.EventHandler(this.Update_ID);
-            // 
             // Label_OT
             // 
             this.Label_OT.Location = new System.Drawing.Point(4, 48);
@@ -3327,24 +2604,6 @@
             this.Label_OT.Text = "OT:";
             this.Label_OT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Label_OT.Click += new System.EventHandler(this.ClickOT);
-            // 
-            // Label_SID
-            // 
-            this.Label_SID.Location = new System.Drawing.Point(86, 22);
-            this.Label_SID.Name = "Label_SID";
-            this.Label_SID.Size = new System.Drawing.Size(45, 13);
-            this.Label_SID.TabIndex = 4;
-            this.Label_SID.Text = "SID:";
-            this.Label_SID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Label_TID
-            // 
-            this.Label_TID.Location = new System.Drawing.Point(4, 22);
-            this.Label_TID.Name = "Label_TID";
-            this.Label_TID.Size = new System.Drawing.Size(40, 13);
-            this.Label_TID.TabIndex = 3;
-            this.Label_TID.Text = "TID:";
-            this.Label_TID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Label_EncryptionConstant
             // 
@@ -3360,7 +2619,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.tabMain);
             this.Name = "PKMEditor";
-            this.Size = new System.Drawing.Size(280, 488);
+            this.Size = new System.Drawing.Size(280, 565);
             this.tabMain.ResumeLayout(false);
             this.Tab_Main.ResumeLayout(false);
             this.FLP_Main.ResumeLayout(false);
@@ -3406,6 +2665,8 @@
             this.FLP_Purification.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Purification)).EndInit();
             this.FLP_ShinyLeaf.ResumeLayout(false);
+            this.FLP_CatchRate.ResumeLayout(false);
+            this.FLP_SizeCP.ResumeLayout(false);
             this.Tab_Met.ResumeLayout(false);
             this.Tab_Met.PerformLayout();
             this.GB_EggConditions.ResumeLayout(false);
@@ -3424,35 +2685,6 @@
             this.FLP_EncounterType.ResumeLayout(false);
             this.FLP_TimeOfDay.ResumeLayout(false);
             this.Tab_Stats.ResumeLayout(false);
-            this.FLP_Stats.ResumeLayout(false);
-            this.FLP_StatHeader.ResumeLayout(false);
-            this.FLP_HackedStats.ResumeLayout(false);
-            this.FLP_HackedStats.PerformLayout();
-            this.FLP_StatsHeaderRight.ResumeLayout(false);
-            this.FLP_HP.ResumeLayout(false);
-            this.FLP_HPRight.ResumeLayout(false);
-            this.FLP_HPRight.PerformLayout();
-            this.FLP_Atk.ResumeLayout(false);
-            this.FLP_AtkRight.ResumeLayout(false);
-            this.FLP_AtkRight.PerformLayout();
-            this.FLP_Def.ResumeLayout(false);
-            this.FLP_DefRight.ResumeLayout(false);
-            this.FLP_DefRight.PerformLayout();
-            this.FLP_SpA.ResumeLayout(false);
-            this.FLP_SpALeft.ResumeLayout(false);
-            this.FLP_SpARight.ResumeLayout(false);
-            this.FLP_SpARight.PerformLayout();
-            this.FLP_SpD.ResumeLayout(false);
-            this.FLP_SpDRight.ResumeLayout(false);
-            this.FLP_SpDRight.PerformLayout();
-            this.FLP_Spe.ResumeLayout(false);
-            this.FLP_SpeRight.ResumeLayout(false);
-            this.FLP_SpeRight.PerformLayout();
-            this.FLP_StatsTotal.ResumeLayout(false);
-            this.FLP_StatsTotalRight.ResumeLayout(false);
-            this.FLP_StatsTotalRight.PerformLayout();
-            this.FLP_HPType.ResumeLayout(false);
-            this.FLP_Characteristic.ResumeLayout(false);
             this.Tab_Attacks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PB_WarnMove4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_WarnMove3)).EndInit();
@@ -3467,12 +2699,13 @@
             this.GB_CurrentMoves.PerformLayout();
             this.Tab_OTMisc.ResumeLayout(false);
             this.Tab_OTMisc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Favorite)).EndInit();
             this.FLP_PKMEditors.ResumeLayout(false);
             this.FLP_PKMEditors.PerformLayout();
             this.GB_nOT.ResumeLayout(false);
             this.GB_nOT.PerformLayout();
             this.GB_Markings.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PB_MarkHorohoro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_MarkGO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_MarkVC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_MarkAlola)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Mark6)).EndInit();
@@ -3508,11 +2741,11 @@
         private System.Windows.Forms.Button BTN_RerollPID;
         private System.Windows.Forms.FlowLayoutPanel FLP_Species;
         private System.Windows.Forms.Label Label_Species;
-        public System.Windows.Forms.ComboBox CB_Species;
+        private System.Windows.Forms.ComboBox CB_Species;
         private System.Windows.Forms.FlowLayoutPanel FLP_Nickname;
         private System.Windows.Forms.FlowLayoutPanel FLP_NicknameLeft;
         private System.Windows.Forms.CheckBox CHK_Nicknamed;
-        public System.Windows.Forms.TextBox TB_Nickname;
+        private System.Windows.Forms.TextBox TB_Nickname;
         private System.Windows.Forms.FlowLayoutPanel FLP_EXPLevel;
         private System.Windows.Forms.Label Label_EXP;
         private System.Windows.Forms.FlowLayoutPanel FLP_EXPLevelRight;
@@ -3528,8 +2761,8 @@
         private System.Windows.Forms.ComboBox CB_HeldItem;
         private System.Windows.Forms.FlowLayoutPanel FLP_FriendshipForm;
         private System.Windows.Forms.FlowLayoutPanel FLP_FriendshipFormLeft;
-        public System.Windows.Forms.Label Label_Friendship;
-        public System.Windows.Forms.Label Label_HatchCounter;
+        private System.Windows.Forms.Label Label_Friendship;
+        private System.Windows.Forms.Label Label_HatchCounter;
         private System.Windows.Forms.FlowLayoutPanel FLP_FriendshipFormRight;
         private System.Windows.Forms.MaskedTextBox TB_Friendship;
         private System.Windows.Forms.Label Label_Form;
@@ -3546,7 +2779,7 @@
         private System.Windows.Forms.ComboBox CB_Language;
         private System.Windows.Forms.FlowLayoutPanel FLP_EggPKRS;
         private System.Windows.Forms.FlowLayoutPanel FLP_EggPKRSLeft;
-        public System.Windows.Forms.CheckBox CHK_IsEgg;
+        private System.Windows.Forms.CheckBox CHK_IsEgg;
         private System.Windows.Forms.FlowLayoutPanel FLP_EggPKRSRight;
         private System.Windows.Forms.CheckBox CHK_Infected;
         private System.Windows.Forms.CheckBox CHK_Cured;
@@ -3574,7 +2807,7 @@
         private System.Windows.Forms.FlowLayoutPanel FLP_Purification;
         private System.Windows.Forms.Label L_HeartGauge;
         private System.Windows.Forms.NumericUpDown NUD_Purification;
-        public System.Windows.Forms.CheckBox CHK_Shadow;
+        private System.Windows.Forms.CheckBox CHK_Shadow;
         private System.Windows.Forms.TabPage Tab_Met;
         private System.Windows.Forms.CheckBox CHK_AsEgg;
         private System.Windows.Forms.GroupBox GB_EggConditions;
@@ -3588,12 +2821,12 @@
         private System.Windows.Forms.ComboBox CB_GameOrigin;
         private System.Windows.Forms.FlowLayoutPanel FLP_MetLocation;
         private System.Windows.Forms.Label Label_MetLocation;
-        public System.Windows.Forms.ComboBox CB_MetLocation;
+        private System.Windows.Forms.ComboBox CB_MetLocation;
         private System.Windows.Forms.FlowLayoutPanel FLP_Ball;
         private System.Windows.Forms.FlowLayoutPanel FLP_BallLeft;
         private System.Windows.Forms.Label Label_Ball;
         private System.Windows.Forms.PictureBox PB_Ball;
-        public System.Windows.Forms.ComboBox CB_Ball;
+        private System.Windows.Forms.ComboBox CB_Ball;
         private System.Windows.Forms.FlowLayoutPanel FLP_MetLevel;
         private System.Windows.Forms.Label Label_MetLevel;
         private System.Windows.Forms.MaskedTextBox TB_MetLevel;
@@ -3608,68 +2841,8 @@
         private System.Windows.Forms.ComboBox CB_EncounterType;
         private System.Windows.Forms.FlowLayoutPanel FLP_TimeOfDay;
         private System.Windows.Forms.Label L_MetTimeOfDay;
-        public System.Windows.Forms.ComboBox CB_MetTimeOfDay;
+        private System.Windows.Forms.ComboBox CB_MetTimeOfDay;
         private System.Windows.Forms.TabPage Tab_Stats;
-        private System.Windows.Forms.FlowLayoutPanel FLP_Stats;
-        private System.Windows.Forms.FlowLayoutPanel FLP_StatHeader;
-        private System.Windows.Forms.FlowLayoutPanel FLP_HackedStats;
-        private System.Windows.Forms.CheckBox CHK_HackedStats;
-        private System.Windows.Forms.FlowLayoutPanel FLP_StatsHeaderRight;
-        private System.Windows.Forms.Label Label_IVs;
-        private System.Windows.Forms.Label Label_EVs;
-        private System.Windows.Forms.Label Label_Stats;
-        private System.Windows.Forms.FlowLayoutPanel FLP_HP;
-        private System.Windows.Forms.Label Label_HP;
-        private System.Windows.Forms.FlowLayoutPanel FLP_HPRight;
-        private System.Windows.Forms.MaskedTextBox TB_HPIV;
-        private System.Windows.Forms.MaskedTextBox TB_HPEV;
-        private System.Windows.Forms.MaskedTextBox Stat_HP;
-        private System.Windows.Forms.FlowLayoutPanel FLP_Atk;
-        private System.Windows.Forms.Label Label_ATK;
-        private System.Windows.Forms.FlowLayoutPanel FLP_AtkRight;
-        private System.Windows.Forms.MaskedTextBox TB_ATKIV;
-        private System.Windows.Forms.MaskedTextBox TB_ATKEV;
-        private System.Windows.Forms.MaskedTextBox Stat_ATK;
-        private System.Windows.Forms.FlowLayoutPanel FLP_Def;
-        private System.Windows.Forms.Label Label_DEF;
-        private System.Windows.Forms.FlowLayoutPanel FLP_DefRight;
-        private System.Windows.Forms.MaskedTextBox TB_DEFIV;
-        private System.Windows.Forms.MaskedTextBox TB_DEFEV;
-        private System.Windows.Forms.MaskedTextBox Stat_DEF;
-        private System.Windows.Forms.FlowLayoutPanel FLP_SpA;
-        private System.Windows.Forms.FlowLayoutPanel FLP_SpALeft;
-        private System.Windows.Forms.Label Label_SPA;
-        private System.Windows.Forms.Label Label_SPC;
-        private System.Windows.Forms.FlowLayoutPanel FLP_SpARight;
-        private System.Windows.Forms.MaskedTextBox TB_SPAIV;
-        private System.Windows.Forms.MaskedTextBox TB_SPAEV;
-        private System.Windows.Forms.MaskedTextBox Stat_SPA;
-        private System.Windows.Forms.FlowLayoutPanel FLP_SpD;
-        private System.Windows.Forms.Label Label_SPD;
-        private System.Windows.Forms.FlowLayoutPanel FLP_SpDRight;
-        private System.Windows.Forms.MaskedTextBox TB_SPDIV;
-        private System.Windows.Forms.MaskedTextBox TB_SPDEV;
-        private System.Windows.Forms.MaskedTextBox Stat_SPD;
-        private System.Windows.Forms.FlowLayoutPanel FLP_Spe;
-        private System.Windows.Forms.Label Label_SPE;
-        private System.Windows.Forms.FlowLayoutPanel FLP_SpeRight;
-        private System.Windows.Forms.MaskedTextBox TB_SPEIV;
-        private System.Windows.Forms.MaskedTextBox TB_SPEEV;
-        private System.Windows.Forms.MaskedTextBox Stat_SPE;
-        private System.Windows.Forms.FlowLayoutPanel FLP_StatsTotal;
-        private System.Windows.Forms.Label Label_Total;
-        private System.Windows.Forms.FlowLayoutPanel FLP_StatsTotalRight;
-        private System.Windows.Forms.TextBox TB_IVTotal;
-        private System.Windows.Forms.TextBox TB_EVTotal;
-        private System.Windows.Forms.Label L_Potential;
-        private System.Windows.Forms.FlowLayoutPanel FLP_HPType;
-        private System.Windows.Forms.Label Label_HiddenPowerPrefix;
-        private System.Windows.Forms.ComboBox CB_HPType;
-        private System.Windows.Forms.FlowLayoutPanel FLP_Characteristic;
-        private System.Windows.Forms.Label Label_CharacteristicPrefix;
-        private System.Windows.Forms.Label L_Characteristic;
-        private System.Windows.Forms.Button BTN_RandomEVs;
-        private System.Windows.Forms.Button BTN_RandomIVs;
         private System.Windows.Forms.TabPage Tab_Attacks;
         private System.Windows.Forms.PictureBox PB_WarnMove4;
         private System.Windows.Forms.PictureBox PB_WarnMove3;
@@ -3705,13 +2878,13 @@
         private System.Windows.Forms.Button BTN_Medals;
         private System.Windows.Forms.Button BTN_History;
         private System.Windows.Forms.TextBox TB_EC;
-        public System.Windows.Forms.GroupBox GB_nOT;
+        private System.Windows.Forms.GroupBox GB_nOT;
         private System.Windows.Forms.Label Label_CTGender;
         private System.Windows.Forms.TextBox TB_OTt2;
         private System.Windows.Forms.Label Label_PrevOT;
         private System.Windows.Forms.Button BTN_RerollEC;
         private System.Windows.Forms.GroupBox GB_Markings;
-        private System.Windows.Forms.PictureBox PB_MarkHorohoro;
+        private System.Windows.Forms.PictureBox PB_MarkGO;
         private System.Windows.Forms.PictureBox PB_MarkVC;
         private System.Windows.Forms.PictureBox PB_MarkAlola;
         private System.Windows.Forms.PictureBox PB_Mark6;
@@ -3726,18 +2899,22 @@
         private System.Windows.Forms.GroupBox GB_ExtraBytes;
         private System.Windows.Forms.MaskedTextBox TB_ExtraByte;
         private System.Windows.Forms.ComboBox CB_ExtraBytes;
-        public System.Windows.Forms.GroupBox GB_OT;
+        private System.Windows.Forms.GroupBox GB_OT;
         private System.Windows.Forms.Label Label_OTGender;
         private System.Windows.Forms.TextBox TB_OT;
-        private System.Windows.Forms.MaskedTextBox TB_SID;
-        private System.Windows.Forms.MaskedTextBox TB_TID;
         private System.Windows.Forms.Label Label_OT;
-        private System.Windows.Forms.Label Label_SID;
-        private System.Windows.Forms.Label Label_TID;
         private System.Windows.Forms.Label Label_EncryptionConstant;
         private System.Windows.Forms.FlowLayoutPanel FLP_ShinyLeaf;
         private System.Windows.Forms.Label L_ShinyLeaf;
         private Controls.ShinyLeaf ShinyLeaf;
         private ContestStat Contest;
+        private StatEditor Stats;
+        private TrainerID TID_Trainer;
+        private System.Windows.Forms.FlowLayoutPanel FLP_CatchRate;
+        private System.Windows.Forms.Label L_CatchRate;
+        private CatchRate CR_PK1;
+        private System.Windows.Forms.FlowLayoutPanel FLP_SizeCP;
+        private SizeCP SizeCP;
+        private System.Windows.Forms.PictureBox PB_Favorite;
     }
 }

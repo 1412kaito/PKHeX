@@ -10,17 +10,17 @@ namespace PKHeX.WinForms
     {
         private readonly SaveFile Origin;
         private readonly SAV6 SAV;
+
         public SAV_Link6(SaveFile sav)
         {
-            SAV = (SAV6)(Origin = sav).Clone();
             InitializeComponent();
+            WinFormsUtil.TranslateInterface(this, Main.CurrentLanguage);
+            SAV = (SAV6)(Origin = sav).Clone();
             foreach (var cb in TAB_Items.Controls.OfType<ComboBox>())
             {
-                cb.DisplayMember = "Text";
-                cb.ValueMember = "Value";
+                cb.InitializeBinding();
                 cb.DataSource = new BindingSource(GameInfo.ItemDataSource.Where(item => item.Value <= SAV.MaxItemID).ToArray(), null);
             }
-            WinFormsUtil.TranslateInterface(this, Main.CurrentLanguage);
             byte[] data = SAV.LinkBlock;
             if (data == null)
             {
@@ -47,10 +47,12 @@ namespace PKHeX.WinForms
             Origin.SetData(SAV.Data, 0);
             Close();
         }
+
         private void B_Cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
+
         private void B_Import_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog {Filter = PL6.Filter};
@@ -61,10 +63,11 @@ namespace PKHeX.WinForms
             { WinFormsUtil.Alert("Invalid file length"); return; }
 
             byte[] data = File.ReadAllBytes(ofd.FileName);
-            
+
             LoadLinkData(data);
             B_Export.Enabled = true;
         }
+
         private void B_Export_Click(object sender, EventArgs e)
         {
             if (LinkInfo.Data == null)
@@ -75,14 +78,14 @@ namespace PKHeX.WinForms
                 return;
 
             File.WriteAllBytes(sfd.FileName, LinkInfo.Data);
-            WinFormsUtil.Alert("Pokémon Link data saved to:\r" + sfd.FileName + ".");
+            WinFormsUtil.Alert("Pokémon Link data saved to:" + Environment.NewLine + sfd.FileName);
         }
-        
+
         private void LoadLinkData(byte[] data)
         {
             LinkInfo = new PL6(data);
 
-            RTB_LinkSource.Text = LinkInfo.Origin_app;
+            RTB_LinkSource.Text = LinkInfo.Origin;
             CHK_LinkAvailable.Checked = LinkInfo.PL_enabled;
 
             NUD_BP.Value = LinkInfo.BattlePoints;

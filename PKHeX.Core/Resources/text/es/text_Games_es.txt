@@ -30,10 +30,15 @@ Rubí Omega
 
 Sol
 Luna
-
-
+Ultrasol
+Ultraluna
 GO
 Roja
 Azul [INT]/Verde [JP]
 Azul [JP]
 Amarilla
+Oro
+Plata
+Cristal
+Let's Go, Pikachu!
+Let's Go, Eevee!

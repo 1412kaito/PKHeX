@@ -2,94 +2,113 @@
 
 namespace PKHeX.Core
 {
-    public class NPCLock
-    {
-        public int Species;
-        public uint? Nature = null;
-        public uint? Gender = null;
-        public uint? Ability = null;
-    }
     public static class LockFinder
     {
-        // Message Passing
-        private sealed class SeedPID
+        public static bool IsAllShadowLockValid(EncounterStaticShadow s, PIDIV pv, PKM pkm)
         {
-            public uint PID;
-            public uint Seed;
+            var teams = s.Locks;
+            if (teams.Length == 0)
+                return true;
+
+            var tsv = s.Version == GameVersion.XD ? pkm.TSV : -1; // no xd shiny shadow mons
+            return IsAllShadowLockValid(pv, teams, tsv);
         }
 
-        // Recursively iterates to visit possible locks until all locks (or none) are satisfied.
-        public static bool FindLockSeed(uint seed, RNG RNG, Stack<NPCLock> Locks, NPCLock prior, Stack<uint> PIDs, bool XD, out uint origin)
+        public static bool IsAllShadowLockValid(PIDIV pv, IEnumerable<TeamLock> teams, int tsv = -1)
         {
-            if (Locks.Count == 0)
-                return VerifyNPC(seed, RNG, PIDs, XD, out origin);
-
-            var l = Locks.Pop();
-            foreach (var poss in FindPossibleLockFrames(seed, RNG, l, prior))
+            foreach (var t in teams)
             {
-                PIDs.Push(poss.PID); // possible match
-                if (FindLockSeed(poss.Seed, RNG, Locks, l, PIDs, XD, out origin))
-                    return true; // all locks are satisfied
-                PIDs.Pop(); // no match, remove
+                var result = new TeamLockResult(t, pv.OriginSeed, tsv);
+                if (result.Valid)
+                    return true;
             }
-            Locks.Push(l); // return the lock, lock is impossible
-
-            origin = seed;
             return false;
         }
 
-        // Restriction Checking
-        private static IEnumerable<SeedPID> FindPossibleLockFrames(uint seed, RNG RNG, NPCLock l, NPCLock prior)
+        // Colosseum/XD Starters
+        public static bool IsXDStarterValid(uint seed, int TID, int SID)
         {
-            // todo: check for premature breaks
-            do
+            // pidiv reversed 2x yields SID, 3x yields TID. shift by 7 if another PKM is generated prior
+            var SIDf = RNG.XDRNG.Reverse(seed, 2);
+            var TIDf = RNG.XDRNG.Prev(SIDf);
+            return SIDf >> 16 == SID && TIDf >> 16 == TID;
+        }
+
+        public static bool IsColoStarterValid(int species, ref uint seed, int TID, int SID, uint pkPID, uint IV1, uint IV2)
+        {
+            // reverse the seed the bare minimum
+            int rev = 2;
+            if (species == 196)
+                rev += 7;
+
+            var rng = RNG.XDRNG;
+            var SIDf = rng.Reverse(seed, rev);
+            int ctr = 0;
+            uint temp;
+            while ((temp = rng.Prev(SIDf)) >> 16 != TID || SIDf >> 16 != SID)
             {
-                // todo: generate PKM for checking
-                uint pid = 0;
-                int gender = 0;
-                int abil = 0;
-                uint origin = 0; // possible to defer calc to yield?
-
-                if (prior == null)
-                {
-                    if (MatchesLock(l, pid, gender, abil))
-                        yield return new SeedPID { Seed = origin, PID = pid };
-                    yield break;
-                }
-                if (MatchesLock(prior, pid, gender, abil))
-                    yield break; // prior lock breaks our chain!
-                if (MatchesLock(l, pid, gender, abil))
-                    yield return new SeedPID { Seed = origin, PID = pid };
-
-            } while (true);
-
-        }
-        private static bool VerifyNPC(uint seed, RNG RNG, Stack<uint> PIDs, bool XD, out uint origin)
-        {
-            // todo: get trainer TID/SID/Origin Seed
-            origin = 0;
-            var tid = 0;
-            var sid = 0;
-
-            // verify none are shiny
-            var arr = PIDs.ToArray();
-            for (int i = 0; i < PIDs.Count; i++)
-                if (IsShiny(tid, sid, arr[i]))
+                SIDf = temp;
+                if (ctr > 32) // arbitrary
                     return false;
+                ctr++;
+            }
+
+            var next = rng.Next(SIDf);
+
+            // generate Umbreon
+            var PIDIV = GenerateValidColoStarterPID(ref next, TID, SID);
+            if (species == 196) // need espeon, which is immediately next
+                PIDIV = GenerateValidColoStarterPID(ref next, TID, SID);
+
+            if (!PIDIV.Equals(pkPID, IV1, IV2))
+                return false;
+            seed = rng.Reverse(SIDf, 2);
             return true;
         }
 
-        // Helpers
-        private static bool IsShiny(int TID, int SID, uint PID) => (TID ^ SID ^ (PID >> 16) ^ (PID & 0xFFFF)) < 8;
-        private static bool MatchesLock(NPCLock k, uint PID, int Gender, int AbilityNumber)
+        private struct PIDIVGroup
         {
-            if (k.Nature != null && k.Nature != PID % 25)
-                return false;
-            if (k.Gender != null && k.Gender != Gender)
-                return false;
-            if (k.Ability != null && k.Ability != AbilityNumber)
-                return false;
-            return true;
+            public uint PID;
+            public uint IV1;
+            public uint IV2;
+
+            public bool Equals(uint pid, uint iv1, uint iv2) => PID == pid && IV1 == iv1 && IV2 == iv2;
+        }
+
+        private static PIDIVGroup GenerateValidColoStarterPID(ref uint uSeed, int TID, int SID)
+        {
+            var rng = RNG.XDRNG;
+            PIDIVGroup group = new PIDIVGroup();
+
+            uSeed = rng.Advance(uSeed, 2); // skip fakePID
+            group.IV1 = (uSeed >> 16) & 0x7FFF;
+            uSeed = rng.Next(uSeed);
+            group.IV2 = (uSeed >> 16) & 0x7FFF;
+            uSeed = rng.Next(uSeed);
+            uSeed = rng.Advance(uSeed, 1); // skip ability call
+            group.PID = GenerateStarterPID(ref uSeed, TID, SID);
+
+            uSeed = rng.Advance(uSeed, 2); // PID calls consumed
+
+            return group;
+        }
+
+        private static bool IsShiny(int TID, int SID, uint PID) => (TID ^ SID ^ (PID >> 16) ^ (PID & 0xFFFF)) < 8;
+
+        private static uint GenerateStarterPID(ref uint uSeed, int TID, int SID)
+        {
+            uint PID;
+            const byte ratio = 0x20; // 12.5% F (can't be female)
+            while (true)
+            {
+                var next = RNG.XDRNG.Next(uSeed);
+                PID = (uSeed & 0xFFFF0000) | (next >> 16);
+                if ((PID & 0xFF) > ratio && !IsShiny(TID, SID, PID))
+                    break;
+                uSeed = RNG.XDRNG.Next(next);
+            }
+
+            return PID;
         }
     }
 }

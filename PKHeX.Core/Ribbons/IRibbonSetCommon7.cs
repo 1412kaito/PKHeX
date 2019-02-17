@@ -1,7 +1,7 @@
 ﻿namespace PKHeX.Core
 {
     /// <summary> Common Ribbons introduced in Generation 7 </summary>
-    internal interface IRibbonSetCommon7
+    public interface IRibbonSetCommon7
     {
         bool RibbonChampionAlola { get; set; }
         bool RibbonBattleRoyale { get; set; }
@@ -16,6 +16,7 @@
             nameof(IRibbonSetCommon7.RibbonChampionAlola), nameof(IRibbonSetCommon7.RibbonBattleRoyale),
             nameof(IRibbonSetCommon7.RibbonBattleTreeGreat), nameof(IRibbonSetCommon7.RibbonBattleTreeMaster)
         };
+
         internal static bool[] RibbonBits(this IRibbonSetCommon7 set)
         {
             if (set == null)
@@ -28,6 +29,7 @@
                 set.RibbonBattleTreeMaster,
             };
         }
-        internal static string[] RibbonNames(this IRibbonSetCommon7 set) => RibbonSetNamesCommon7;
+
+        internal static string[] RibbonNames(this IRibbonSetCommon7 _) => RibbonSetNamesCommon7;
     }
 }
